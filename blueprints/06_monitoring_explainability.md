@@ -18,4 +18,4 @@ Ensuring the AI system remains robust, fair, and explainable after deployment is
 
 ## Outcome
 
-A trustworthy, transparent AI system that meets high standards of responsibility and reliability. 
+A trustworthy, transparent AI system that meets high standards of responsibility and reliability.
