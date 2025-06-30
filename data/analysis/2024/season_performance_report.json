@@ -1,0 +1,516 @@
+{
+  "season_summary": {
+    "year": 2024,
+    "races_analyzed": 12,
+    "total_drivers": 16,
+    "total_teams": 8,
+    "championship_leader": "Sainz",
+    "constructor_leader": "McLaren",
+    "most_wins": "Sainz",
+    "most_consistent": "Norris",
+    "analysis_date": "2025-06-30T23:22:15.710526"
+  },
+  "driver_standings": [
+    {
+      "Driver": "Sainz",
+      "points": 276,
+      "races": 12,
+      "wins": 9,
+      "podiums": 12,
+      "points_per_race": 23.0,
+      "avg_position": 1.3333333333333333,
+      "positions": [
+        1.0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        1
+      ],
+      "Championship_Position": 1
+    },
+    {
+      "Driver": "Piastri",
+      "points": 241,
+      "races": 12,
+      "wins": 4,
+      "podiums": 12,
+      "points_per_race": 20.083333333333332,
+      "avg_position": 1.75,
+      "positions": [
+        2.0,
+        2,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        3,
+        2,
+        1,
+        1
+      ],
+      "Championship_Position": 2
+    },
+    {
+      "Driver": "Ocon",
+      "points": 182,
+      "races": 12,
+      "wins": 1,
+      "podiums": 9,
+      "points_per_race": 15.166666666666666,
+      "avg_position": 3.0833333333333335,
+      "positions": [
+        3.0,
+        2,
+        3,
+        5,
+        4,
+        4,
+        3,
+        1,
+        3,
+        3,
+        3,
+        3
+      ],
+      "Championship_Position": 3
+    },
+    {
+      "Driver": "Norris",
+      "points": 131,
+      "races": 12,
+      "wins": 0,
+      "podiums": 2,
+      "points_per_race": 10.916666666666666,
+      "avg_position": 4.666666666666667,
+      "positions": [
+        4.0,
+        5,
+        6,
+        5,
+        7,
+        4,
+        2,
+        5,
+        5,
+        3,
+        5,
+        5
+      ],
+      "Championship_Position": 4
+    },
+    {
+      "Driver": "Stroll",
+      "points": 122,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 10.166666666666666,
+      "avg_position": 4.916666666666667,
+      "positions": [
+        5.0,
+        6,
+        6,
+        4,
+        5,
+        4,
+        4,
+        4,
+        5,
+        5,
+        6,
+        5
+      ],
+      "Championship_Position": 5
+    },
+    {
+      "Driver": "Tsunoda",
+      "points": 102,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 8.5,
+      "avg_position": 5.75,
+      "positions": [
+        6.0,
+        6,
+        6,
+        6,
+        5,
+        5,
+        7,
+        6,
+        7,
+        6,
+        4,
+        5
+      ],
+      "Championship_Position": 6
+    },
+    {
+      "Driver": "Leclerc",
+      "points": 82,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 6.833333333333333,
+      "avg_position": 6.583333333333333,
+      "positions": [
+        7.0,
+        7,
+        6,
+        6,
+        7,
+        6,
+        6,
+        6,
+        6,
+        9,
+        5,
+        8
+      ],
+      "Championship_Position": 7
+    },
+    {
+      "Driver": "Sargeant",
+      "points": 56,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 4.666666666666667,
+      "avg_position": 7.666666666666667,
+      "positions": [
+        8.0,
+        8,
+        8,
+        7,
+        7,
+        8,
+        7,
+        8,
+        9,
+        8,
+        7,
+        7
+      ],
+      "Championship_Position": 8
+    },
+    {
+      "Driver": "Verstappen",
+      "points": 37,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 3.0833333333333335,
+      "avg_position": 8.5,
+      "positions": [
+        9.0,
+        10,
+        9,
+        8,
+        8,
+        9,
+        7,
+        8,
+        9,
+        9,
+        8,
+        8
+      ],
+      "Championship_Position": 9
+    },
+    {
+      "Driver": "Russell",
+      "points": 21,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 1.75,
+      "avg_position": 9.416666666666666,
+      "positions": [
+        10.0,
+        9,
+        11,
+        8,
+        8,
+        10,
+        9,
+        10,
+        10,
+        9,
+        10,
+        9
+      ],
+      "Championship_Position": 10
+    },
+    {
+      "Driver": "Perez",
+      "points": 4,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 0.3333333333333333,
+      "avg_position": 11.166666666666666,
+      "positions": [
+        11.0,
+        11,
+        9,
+        13,
+        11,
+        10,
+        12,
+        12,
+        11,
+        10,
+        12,
+        12
+      ],
+      "Championship_Position": 11
+    },
+    {
+      "Driver": "Alonso",
+      "points": 1,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 0.08333333333333333,
+      "avg_position": 12.083333333333334,
+      "positions": [
+        12.0,
+        12,
+        13,
+        13,
+        12,
+        12,
+        12,
+        12,
+        14,
+        12,
+        11,
+        10
+      ],
+      "Championship_Position": 12
+    },
+    {
+      "Driver": "Hamilton",
+      "points": 0,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 0.0,
+      "avg_position": 12.833333333333334,
+      "positions": [
+        13.0,
+        13,
+        11,
+        13,
+        14,
+        14,
+        13,
+        12,
+        12,
+        12,
+        15,
+        12
+      ],
+      "Championship_Position": 13
+    },
+    {
+      "Driver": "Gasly",
+      "points": 0,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 0.0,
+      "avg_position": 15.166666666666666,
+      "positions": [
+        15.0,
+        14,
+        14,
+        13,
+        16,
+        15,
+        16,
+        15,
+        16,
+        17,
+        15,
+        16
+      ],
+      "Championship_Position": 14
+    },
+    {
+      "Driver": "Albon",
+      "points": 0,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 0.0,
+      "avg_position": 14.166666666666666,
+      "positions": [
+        14.0,
+        13,
+        13,
+        14,
+        14,
+        17,
+        14,
+        14,
+        14,
+        14,
+        15,
+        14
+      ],
+      "Championship_Position": 15
+    },
+    {
+      "Driver": "Ricciardo",
+      "points": 0,
+      "races": 12,
+      "wins": 0,
+      "podiums": 0,
+      "points_per_race": 0.0,
+      "avg_position": 16.25,
+      "positions": [
+        16.0,
+        16,
+        15,
+        17,
+        18,
+        16,
+        16,
+        17,
+        15,
+        18,
+        16,
+        15
+      ],
+      "Championship_Position": 16
+    }
+  ],
+  "team_standings": [
+    {
+      "Team": "McLaren",
+      "points": 372,
+      "drivers": [
+        "Piastri",
+        "Norris"
+      ],
+      "wins": 4,
+      "podiums": 14,
+      "Championship_Position": 1
+    },
+    {
+      "Team": "Ferrari",
+      "points": 358,
+      "drivers": [
+        "Sainz",
+        "Leclerc"
+      ],
+      "wins": 9,
+      "podiums": 12,
+      "Championship_Position": 2
+    },
+    {
+      "Team": "Alpine",
+      "points": 182,
+      "drivers": [
+        "Ocon",
+        "Gasly"
+      ],
+      "wins": 1,
+      "podiums": 9,
+      "Championship_Position": 3
+    },
+    {
+      "Team": "Aston Martin",
+      "points": 123,
+      "drivers": [
+        "Stroll",
+        "Alonso"
+      ],
+      "wins": 0,
+      "podiums": 0,
+      "Championship_Position": 4
+    },
+    {
+      "Team": "RB",
+      "points": 102,
+      "drivers": [
+        "Tsunoda",
+        "Ricciardo"
+      ],
+      "wins": 0,
+      "podiums": 0,
+      "Championship_Position": 5
+    },
+    {
+      "Team": "Williams",
+      "points": 56,
+      "drivers": [
+        "Sargeant",
+        "Albon"
+      ],
+      "wins": 0,
+      "podiums": 0,
+      "Championship_Position": 6
+    },
+    {
+      "Team": "Red Bull",
+      "points": 41,
+      "drivers": [
+        "Verstappen",
+        "Perez"
+      ],
+      "wins": 0,
+      "podiums": 0,
+      "Championship_Position": 7
+    },
+    {
+      "Team": "Mercedes",
+      "points": 21,
+      "drivers": [
+        "Russell",
+        "Hamilton"
+      ],
+      "wins": 0,
+      "podiums": 0,
+      "Championship_Position": 8
+    }
+  ],
+  "rookie_analysis": {
+    "Sargeant": {
+      "races_completed": 12,
+      "avg_position": 7.666666666666667,
+      "best_position": 7,
+      "worst_position": 9,
+      "avg_lap_time": 80.82428200096292,
+      "consistency": 0.10813755095531875,
+      "improvement_rate": 0.08333333333333333,
+      "championship_points": 56
+    },
+    "Piastri": {
+      "races_completed": 12,
+      "avg_position": 1.75,
+      "best_position": 1,
+      "worst_position": 3,
+      "avg_lap_time": 78.38794329928946,
+      "consistency": 0.26618194816964974,
+      "improvement_rate": 0.08333333333333333,
+      "championship_points": 241
+    }
+  },
+  "performance_insights": [
+    "Championship leader Sainz has a 35 point advantage",
+    "Best performing rookie: Piastri with 241 points",
+    "Constructor's championship gap: 14 points between top 2 teams"
+  ]
+}

@@ -1,0 +1,289 @@
+{% extends "base.html" %}
+
+{% block title %}F1 ML Dashboard - Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="hero-title">F1 Machine Learning Dashboard</h1>
+                <p class="hero-subtitle">Advanced analytics and prediction models for Formula 1 race performance</p>
+                <div class="mt-4">
+                    <a href="{{ url_for('model_performance') }}" class="btn btn-f1 me-3">
+                        <i class="fas fa-chart-line"></i> View Models
+                    </a>
+                    <a href="{{ url_for('predict') }}" class="btn btn-outline-light">
+                        <i class="fas fa-brain"></i> Make Prediction
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fas fa-racing-flag" style="font-size: 8rem; opacity: 0.3;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Stats -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="metric-box">
+                <div class="metric-value" id="total-laps">1,210</div>
+                <div class="metric-label">Total Laps Analyzed</div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="metric-box">
+                <div class="metric-value" id="total-features">47</div>
+                <div class="metric-label">Engineered Features</div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="metric-box">
+                <div class="metric-value" id="best-rmse">0.350</div>
+                <div class="metric-label">Best RMSE (seconds)</div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="metric-box">
+                <div class="metric-value" id="best-r2">99.2%</div>
+                <div class="metric-label">Best R² Score</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dashboard Cards -->
+<div class="container">
+    <div class="row">
+        <!-- Model Performance Card -->
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-robot"></i> Model Performance</h3>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">Our advanced machine learning models achieve exceptional accuracy in predicting F1 lap times.</p>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 class="text-primary">Best Model</h5>
+                            <p class="mb-1"><strong>ElasticNet</strong></p>
+                            <small class="text-muted">RMSE: 0.350s | R²: 0.992</small>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="text-success">Models Trained</h5>
+                            <p class="mb-1"><strong>12 Total</strong></p>
+                            <small class="text-muted">5 Baseline + 7 Advanced</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <a href="{{ url_for('model_performance') }}" class="btn btn-f1">
+                            <i class="fas fa-chart-line"></i> View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feature Engineering Card -->
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-cogs"></i> Feature Engineering</h3>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">Comprehensive feature engineering with 47 carefully selected features for optimal performance.</p>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 class="text-info">Top Features</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li><small>• Sector Times</small></li>
+                                <li><small>• Rolling Averages</small></li>
+                                <li><small>• Tyre Strategy</small></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="text-warning">Data Quality</h5>
+                            <p class="mb-1"><strong>Excellent</strong></p>
+                            <small class="text-muted">0% Missing Values</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <a href="{{ url_for('feature_analysis') }}" class="btn btn-f1">
+                            <i class="fas fa-cogs"></i> Explore Features
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lap Analysis Card -->
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-stopwatch"></i> Lap Analysis</h3>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">Deep dive into lap time patterns, driver performance, and race dynamics.</p>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 class="text-primary">Race Coverage</h5>
+                            <p class="mb-1"><strong>Monaco 2024</strong></p>
+                            <small class="text-muted">78 Laps | 20 Drivers</small>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="text-success">Performance Range</h5>
+                            <p class="mb-1"><strong>74s - 148s</strong></p>
+                            <small class="text-muted">Fastest to Slowest</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <a href="{{ url_for('lap_analysis') }}" class="btn btn-f1">
+                            <i class="fas fa-stopwatch"></i> Analyze Laps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Prediction Interface Card -->
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-brain"></i> Real-time Prediction</h3>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">Use our trained models to predict lap times based on race conditions and driver performance.</p>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 class="text-primary">Prediction Accuracy</h5>
+                            <p class="mb-1"><strong>±0.35 seconds</strong></p>
+                            <small class="text-muted">Average Error</small>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="text-success">Confidence Level</h5>
+                            <p class="mb-1"><strong>99.2%</strong></p>
+                            <small class="text-muted">Model Reliability</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <a href="{{ url_for('predict') }}" class="btn btn-f1">
+                            <i class="fas fa-brain"></i> Make Prediction
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project Timeline -->
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-timeline"></i> Project Milestones</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="text-center">
+                        <div class="badge bg-success mb-2" style="font-size: 1rem; padding: 10px;">Phase 1 ✓</div>
+                        <h6>Data Ingestion</h6>
+                        <small class="text-muted">Raw F1 data collection and cleaning</small>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="text-center">
+                        <div class="badge bg-success mb-2" style="font-size: 1rem; padding: 10px;">Phase 2 ✓</div>
+                        <h6>Feature Engineering</h6>
+                        <small class="text-muted">69 features created, 47 selected</small>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="text-center">
+                        <div class="badge bg-success mb-2" style="font-size: 1rem; padding: 10px;">Phase 3 ✓</div>
+                        <h6>Model Development</h6>
+                        <small class="text-muted">12 models trained and validated</small>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="text-center">
+                        <div class="badge bg-primary mb-2" style="font-size: 1rem; padding: 10px;">Phase 4 ✓</div>
+                        <h6>Advanced Models</h6>
+                        <small class="text-muted">Data leakage resolved, ensemble methods</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <div class="badge bg-warning mb-2" style="font-size: 1rem; padding: 10px;">Phase 5 🚧</div>
+                        <h6>Dashboard & Deployment</h6>
+                        <small class="text-muted">Interactive dashboard and production deployment</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                <div class="card-body text-center py-5">
+                    <h2 class="mb-4">Ready to Explore F1 Analytics?</h2>
+                    <p class="lead mb-4">Dive into our comprehensive machine learning analysis of Formula 1 performance data</p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="{{ url_for('model_performance') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-chart-line"></i> Model Performance
+                        </a>
+                        <a href="{{ url_for('feature_analysis') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-cogs"></i> Feature Analysis
+                        </a>
+                        <a href="{{ url_for('predict') }}" class="btn btn-light btn-lg">
+                            <i class="fas fa-brain"></i> Live Predictions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Update dashboard stats from API
+    function updateDashboardStats() {
+        fetch('/api/stats')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('total-laps').textContent = data.total_laps.toLocaleString();
+                document.getElementById('total-features').textContent = data.total_features;
+                document.getElementById('best-rmse').textContent = data.best_rmse.toFixed(3);
+                document.getElementById('best-r2').textContent = (data.best_r2 * 100).toFixed(1) + '%';
+            })
+            .catch(error => console.error('Error updating stats:', error));
+    }
+    
+    // Load stats on page load
+    document.addEventListener('DOMContentLoaded', updateDashboardStats);
+    
+    // Auto-refresh stats every minute
+    setInterval(updateDashboardStats, 60000);
+</script>
+{% endblock %}

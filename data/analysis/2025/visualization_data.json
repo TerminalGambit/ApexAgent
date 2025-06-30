@@ -1,0 +1,592 @@
+{
+  "standings_chart": {
+    "drivers": [
+      {
+        "Driver": "Piastri",
+        "points": 143,
+        "Championship_Position": 1
+      },
+      {
+        "Driver": "Norris",
+        "points": 118,
+        "Championship_Position": 2
+      },
+      {
+        "Driver": "Leclerc",
+        "points": 98,
+        "Championship_Position": 3
+      },
+      {
+        "Driver": "Stroll",
+        "points": 54,
+        "Championship_Position": 4
+      },
+      {
+        "Driver": "Lawson",
+        "points": 50,
+        "Championship_Position": 5
+      },
+      {
+        "Driver": "Verstappen",
+        "points": 39,
+        "Championship_Position": 6
+      },
+      {
+        "Driver": "Albon",
+        "points": 39,
+        "Championship_Position": 7
+      },
+      {
+        "Driver": "Gasly",
+        "points": 38,
+        "Championship_Position": 8
+      },
+      {
+        "Driver": "Magnussen",
+        "points": 33,
+        "Championship_Position": 9
+      },
+      {
+        "Driver": "Hamilton",
+        "points": 30,
+        "Championship_Position": 10
+      },
+      {
+        "Driver": "Russell",
+        "points": 30,
+        "Championship_Position": 11
+      },
+      {
+        "Driver": "Alonso",
+        "points": 30,
+        "Championship_Position": 12
+      },
+      {
+        "Driver": "Hulkenberg",
+        "points": 27,
+        "Championship_Position": 13
+      },
+      {
+        "Driver": "Sainz",
+        "points": 26,
+        "Championship_Position": 14
+      },
+      {
+        "Driver": "Ocon",
+        "points": 23,
+        "Championship_Position": 15
+      },
+      {
+        "Driver": "Zhou",
+        "points": 17,
+        "Championship_Position": 16
+      },
+      {
+        "Driver": "Colapinto",
+        "points": 16,
+        "Championship_Position": 17
+      },
+      {
+        "Driver": "Perez",
+        "points": 16,
+        "Championship_Position": 18
+      },
+      {
+        "Driver": "Bottas",
+        "points": 14,
+        "Championship_Position": 19
+      },
+      {
+        "Driver": "Tsunoda",
+        "points": 10,
+        "Championship_Position": 20
+      }
+    ],
+    "teams": [
+      {
+        "Team": "McLaren",
+        "points": 261,
+        "Championship_Position": 1
+      },
+      {
+        "Team": "Ferrari",
+        "points": 128,
+        "Championship_Position": 2
+      },
+      {
+        "Team": "Aston Martin",
+        "points": 84,
+        "Championship_Position": 3
+      },
+      {
+        "Team": "Alpine",
+        "points": 61,
+        "Championship_Position": 4
+      },
+      {
+        "Team": "RB",
+        "points": 60,
+        "Championship_Position": 5
+      },
+      {
+        "Team": "Haas",
+        "points": 60,
+        "Championship_Position": 6
+      },
+      {
+        "Team": "Mercedes",
+        "points": 56,
+        "Championship_Position": 7
+      },
+      {
+        "Team": "Red Bull",
+        "points": 55,
+        "Championship_Position": 8
+      },
+      {
+        "Team": "Williams",
+        "points": 55,
+        "Championship_Position": 9
+      },
+      {
+        "Team": "Sauber",
+        "points": 31,
+        "Championship_Position": 10
+      }
+    ]
+  },
+  "performance_trends": {
+    "Piastri": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        1.0,
+        8.0,
+        3.0,
+        16.0,
+        4.0,
+        1.0,
+        11.0,
+        1.0,
+        1.0,
+        7.0,
+        7.0
+      ],
+      "lap_times": [
+        74.09525126485671,
+        74.0895739005149,
+        74.05685408595885,
+        73.97882284552789,
+        73.94699753695302,
+        74.09031400841538,
+        74.14311679665482,
+        74.02682240695306,
+        74.1194523124501,
+        74.17927833699503,
+        74.09368235595387
+      ]
+    },
+    "Norris": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        10.0,
+        7.0,
+        14.0,
+        13.0,
+        5.0,
+        2.0,
+        1.0,
+        1.0,
+        3.0,
+        2.0,
+        11.0
+      ],
+      "lap_times": [
+        75.66568491219478,
+        75.6026462604415,
+        75.68651230599193,
+        75.67068118234369,
+        75.6241498465299,
+        75.71779154877314,
+        75.68998554188323,
+        75.60677391585399,
+        75.7181334442871,
+        75.67603009261794,
+        75.61631241995713
+      ]
+    },
+    "Leclerc": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        1.0,
+        15.0,
+        1.0,
+        11.0,
+        11.0,
+        2.0,
+        14.0,
+        3.0,
+        14.0,
+        3.0,
+        15.0
+      ],
+      "lap_times": [
+        76.35706481737346,
+        76.50929995789598,
+        76.4694725225842,
+        76.42867942995274,
+        76.37159405162804,
+        76.48766166852474,
+        76.34501929030637,
+        76.42432388321308,
+        76.41846444470428,
+        76.51111967021457,
+        76.38192269289166
+      ]
+    },
+    "Stroll": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        7.0,
+        15.0,
+        20.0,
+        5.0,
+        5.0,
+        19.0,
+        7.0,
+        5.0,
+        6.0,
+        17.0,
+        8.0
+      ],
+      "lap_times": [
+        84.25540110166425,
+        84.26949500512842,
+        84.26220266979415,
+        84.39835718915909,
+        84.22659233645722,
+        84.24070079057903,
+        84.27078607954361,
+        84.21328466810648,
+        84.2527346253919,
+        84.23976266824229,
+        84.26410297448415
+      ]
+    },
+    "Lawson": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        8.0,
+        9.0,
+        11.0,
+        15.0,
+        5.0,
+        3.0,
+        19.0,
+        12.0,
+        11.0,
+        3.0,
+        8.0
+      ],
+      "lap_times": [
+        88.854882438726,
+        88.91513622962016,
+        88.93118339033863,
+        88.88665774084959,
+        88.88419246063629,
+        89.01197745189168,
+        88.92365828190545,
+        88.88853504269676,
+        88.8823706340606,
+        88.74599923310835,
+        88.85826988655758
+      ]
+    },
+    "Verstappen": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        12.0,
+        10.0,
+        14.0,
+        13.0,
+        2.0,
+        6.0,
+        7.0,
+        15.0,
+        15.0,
+        7.0,
+        12.0
+      ],
+      "lap_times": [
+        79.58809280498271,
+        79.42859871909027,
+        79.58449506865546,
+        79.61205249380707,
+        79.51883319563174,
+        79.59052800759247,
+        79.52600651612798,
+        79.53437307754638,
+        79.59546039291789,
+        79.52603566252226,
+        79.55848282378551
+      ]
+    },
+    "Albon": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        18.0,
+        15.0,
+        7.0,
+        17.0,
+        2.0,
+        11.0,
+        14.0,
+        12.0,
+        20.0,
+        13.0,
+        3.0
+      ],
+      "lap_times": [
+        85.73970819155532,
+        85.81148016388708,
+        85.8156975257884,
+        85.82315246845482,
+        85.81437353895616,
+        85.73739293994859,
+        85.85470063886125,
+        85.83149190797005,
+        85.82995478792412,
+        85.75984084594454,
+        85.79568913258194
+      ]
+    },
+    "Gasly": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        16.0,
+        2.0,
+        16.0,
+        6.0,
+        8.0,
+        6.0,
+        12.0,
+        16.0,
+        16.0,
+        11.0,
+        16.0
+      ],
+      "lap_times": [
+        84.99600640345952,
+        84.98130135389388,
+        85.04532111766689,
+        85.05095658322689,
+        85.0249265044561,
+        84.98869841612448,
+        85.0368556674831,
+        84.99027011145954,
+        85.01093464767695,
+        85.00994758750106,
+        84.97728319906585
+      ]
+    },
+    "Magnussen": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        16.0,
+        8.0,
+        15.0,
+        10.0,
+        18.0,
+        9.0,
+        12.0,
+        12.0,
+        10.0,
+        12.0,
+        1.0
+      ],
+      "lap_times": [
+        90.46161995021454,
+        90.4553511848882,
+        90.47937215742705,
+        90.49901896238033,
+        90.52649994722509,
+        90.47004916559833,
+        90.50574237462122,
+        90.62431939081513,
+        90.48181811901202,
+        90.48210237988359,
+        90.44718920085569
+      ]
+    },
+    "Hamilton": {
+      "races": [
+        "Bahrain GP",
+        "Saudi Arabia GP",
+        "Australia GP",
+        "Japan GP",
+        "China GP",
+        "Miami GP",
+        "Imola GP",
+        "Monaco GP",
+        "Canada GP",
+        "Spain GP",
+        "Austria GP"
+      ],
+      "positions": [
+        10.0,
+        6.0,
+        10.0,
+        10.0,
+        6.0,
+        9.0,
+        11.0,
+        14.0,
+        10.0,
+        6.0,
+        20.0
+      ],
+      "lap_times": [
+        78.70314639434096,
+        78.7207124688979,
+        78.67981312808381,
+        78.77198619041975,
+        78.73516981968089,
+        78.62382324988002,
+        78.83861008321499,
+        78.79350598648753,
+        78.77900584228408,
+        78.73219336745979,
+        78.6760110542647
+      ]
+    }
+  },
+  "rookie_comparison": {
+    "Colapinto": {
+      "races_completed": 11,
+      "avg_position": 15.181818181818182,
+      "best_position": 4,
+      "worst_position": 20,
+      "avg_lap_time": 89.72294542506974,
+      "consistency": 2.1095789294166583,
+      "improvement_rate": 1.0,
+      "championship_points": 16
+    },
+    "Lawson": {
+      "races_completed": 11,
+      "avg_position": 9.454545454545455,
+      "best_position": 3,
+      "worst_position": 19,
+      "avg_lap_time": 88.88935116276282,
+      "consistency": 1.9515938355827152,
+      "improvement_rate": 0.0,
+      "championship_points": 50
+    }
+  }
+}
