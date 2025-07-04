@@ -1,0 +1,917 @@
+{
+  "race_info": {
+    "year": 2025,
+    "track": "Austria GP",
+    "prediction_date": "2025-07-03T09:10:34.960166"
+  },
+  "prediction_stages": {
+    "baseline": {
+      "predictions": [
+        {
+          "driver_id": 2,
+          "driver_name": "Leclerc",
+          "team": "Ferrari",
+          "predicted_position": 1,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 3,
+          "driver_name": "Hamilton",
+          "team": "Ferrari",
+          "predicted_position": 2,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 0,
+          "driver_name": "Piastri",
+          "team": "McLaren",
+          "predicted_position": 3,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 1,
+          "driver_name": "Norris",
+          "team": "McLaren",
+          "predicted_position": 4,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 10,
+          "driver_name": "Ocon",
+          "team": "Alpine",
+          "predicted_position": 5,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 12,
+          "driver_name": "Sainz",
+          "team": "Williams",
+          "predicted_position": 6,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 8,
+          "driver_name": "Alonso",
+          "team": "Aston Martin",
+          "predicted_position": 7,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 11,
+          "driver_name": "Gasly",
+          "team": "Alpine",
+          "predicted_position": 8,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 6,
+          "driver_name": "Russell",
+          "team": "Mercedes",
+          "predicted_position": 9,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 16,
+          "driver_name": "Hulkenberg",
+          "team": "Haas",
+          "predicted_position": 10,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 18,
+          "driver_name": "Bottas",
+          "team": "Sauber",
+          "predicted_position": 11,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 17,
+          "driver_name": "Magnussen",
+          "team": "Haas",
+          "predicted_position": 12,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 14,
+          "driver_name": "Tsunoda",
+          "team": "RB",
+          "predicted_position": 13,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 9,
+          "driver_name": "Stroll",
+          "team": "Aston Martin",
+          "predicted_position": 14,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 4,
+          "driver_name": "Verstappen",
+          "team": "Red Bull",
+          "predicted_position": 15,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 19,
+          "driver_name": "Zhou",
+          "team": "Sauber",
+          "predicted_position": 16,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 5,
+          "driver_name": "Perez",
+          "team": "Red Bull",
+          "predicted_position": 17,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 15,
+          "driver_name": "Lawson",
+          "team": "RB",
+          "predicted_position": 18,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 13,
+          "driver_name": "Colapinto",
+          "team": "Williams",
+          "predicted_position": 19,
+          "confidence": 0.4
+        },
+        {
+          "driver_id": 7,
+          "driver_name": "Antonelli",
+          "team": "Mercedes",
+          "predicted_position": 20,
+          "confidence": 0.4
+        }
+      ],
+      "stage": "baseline",
+      "timestamp": "2025-07-03T09:10:34.959945",
+      "data_sources": [
+        "season_form",
+        "driver_experience"
+      ]
+    },
+    "practice": {
+      "predictions": [
+        {
+          "driver_id": 2,
+          "driver_name": "Leclerc",
+          "team": "Ferrari",
+          "predicted_position": 1,
+          "confidence": 0.6,
+          "practice_time": 74.7462802139899
+        },
+        {
+          "driver_id": 3,
+          "driver_name": "Hamilton",
+          "team": "Ferrari",
+          "predicted_position": 2,
+          "confidence": 0.6,
+          "practice_time": 75.2487471344203
+        },
+        {
+          "driver_id": 1,
+          "driver_name": "Norris",
+          "team": "McLaren",
+          "predicted_position": 3,
+          "confidence": 0.6,
+          "practice_time": 76.73430257891353
+        },
+        {
+          "driver_id": 0,
+          "driver_name": "Piastri",
+          "team": "McLaren",
+          "predicted_position": 4,
+          "confidence": 0.6,
+          "practice_time": 76.21129382311685
+        },
+        {
+          "driver_id": 10,
+          "driver_name": "Ocon",
+          "team": "Alpine",
+          "predicted_position": 5,
+          "confidence": 0.6,
+          "practice_time": 77.03490775891824
+        },
+        {
+          "driver_id": 12,
+          "driver_name": "Sainz",
+          "team": "Williams",
+          "predicted_position": 6,
+          "confidence": 0.6,
+          "practice_time": 77.51301087515813
+        },
+        {
+          "driver_id": 11,
+          "driver_name": "Gasly",
+          "team": "Alpine",
+          "predicted_position": 7,
+          "confidence": 0.6,
+          "practice_time": 77.95648732079749
+        },
+        {
+          "driver_id": 8,
+          "driver_name": "Alonso",
+          "team": "Aston Martin",
+          "predicted_position": 8,
+          "confidence": 0.6,
+          "practice_time": 78.16514164826721
+        },
+        {
+          "driver_id": 6,
+          "driver_name": "Russell",
+          "team": "Mercedes",
+          "predicted_position": 9,
+          "confidence": 0.6,
+          "practice_time": 79.89020452606317
+        },
+        {
+          "driver_id": 16,
+          "driver_name": "Hulkenberg",
+          "team": "Haas",
+          "predicted_position": 10,
+          "confidence": 0.6,
+          "practice_time": 79.87933513802062
+        },
+        {
+          "driver_id": 17,
+          "driver_name": "Magnussen",
+          "team": "Haas",
+          "predicted_position": 11,
+          "confidence": 0.6,
+          "practice_time": 80.6277754887532
+        },
+        {
+          "driver_id": 18,
+          "driver_name": "Bottas",
+          "team": "Sauber",
+          "predicted_position": 12,
+          "confidence": 0.6,
+          "practice_time": 80.40188109502459
+        },
+        {
+          "driver_id": 14,
+          "driver_name": "Tsunoda",
+          "team": "RB",
+          "predicted_position": 13,
+          "confidence": 0.6,
+          "practice_time": 81.03314812618363
+        },
+        {
+          "driver_id": 9,
+          "driver_name": "Stroll",
+          "team": "Aston Martin",
+          "predicted_position": 14,
+          "confidence": 0.6,
+          "practice_time": 81.34665550388199
+        },
+        {
+          "driver_id": 4,
+          "driver_name": "Verstappen",
+          "team": "Red Bull",
+          "predicted_position": 15,
+          "confidence": 0.6,
+          "practice_time": 82.5239681255866
+        },
+        {
+          "driver_id": 19,
+          "driver_name": "Zhou",
+          "team": "Sauber",
+          "predicted_position": 16,
+          "confidence": 0.6,
+          "practice_time": 82.75638060741558
+        },
+        {
+          "driver_id": 5,
+          "driver_name": "Perez",
+          "team": "Red Bull",
+          "predicted_position": 17,
+          "confidence": 0.6,
+          "practice_time": 83.30313764936304
+        },
+        {
+          "driver_id": 15,
+          "driver_name": "Lawson",
+          "team": "RB",
+          "predicted_position": 18,
+          "confidence": 0.6,
+          "practice_time": 83.34318367888709
+        },
+        {
+          "driver_id": 13,
+          "driver_name": "Colapinto",
+          "team": "Williams",
+          "predicted_position": 19,
+          "confidence": 0.6,
+          "practice_time": 84.09974330386459
+        },
+        {
+          "driver_id": 7,
+          "driver_name": "Antonelli",
+          "team": "Mercedes",
+          "predicted_position": 20,
+          "confidence": 0.6,
+          "practice_time": 84.7120387992265
+        }
+      ],
+      "stage": "practice",
+      "timestamp": "2025-07-03T09:10:34.960036",
+      "data_sources": [
+        "season_form",
+        "practice_sessions"
+      ]
+    },
+    "qualifying": {
+      "predictions": [
+        {
+          "driver_id": 0,
+          "driver_name": "Piastri",
+          "team": "McLaren",
+          "predicted_position": 1,
+          "confidence": 0.85,
+          "qualifying_position": 1,
+          "qualifying_time": 74.427
+        },
+        {
+          "driver_id": 1,
+          "driver_name": "Norris",
+          "team": "McLaren",
+          "predicted_position": 2,
+          "confidence": 0.85,
+          "qualifying_position": 2,
+          "qualifying_time": 75.319
+        },
+        {
+          "driver_id": 2,
+          "driver_name": "Leclerc",
+          "team": "Ferrari",
+          "predicted_position": 3,
+          "confidence": 0.85,
+          "qualifying_position": 3,
+          "qualifying_time": 76.31
+        },
+        {
+          "driver_id": 3,
+          "driver_name": "Hamilton",
+          "team": "Ferrari",
+          "predicted_position": 4,
+          "confidence": 0.85,
+          "qualifying_position": 4,
+          "qualifying_time": 76.781
+        },
+        {
+          "driver_id": 10,
+          "driver_name": "Ocon",
+          "team": "Alpine",
+          "predicted_position": 6,
+          "confidence": 0.85,
+          "qualifying_position": 5,
+          "qualifying_time": 77.761
+        },
+        {
+          "driver_id": 12,
+          "driver_name": "Sainz",
+          "team": "Williams",
+          "predicted_position": 5,
+          "confidence": 0.85,
+          "qualifying_position": 6,
+          "qualifying_time": 77.921
+        },
+        {
+          "driver_id": 8,
+          "driver_name": "Alonso",
+          "team": "Aston Martin",
+          "predicted_position": 8,
+          "confidence": 0.85,
+          "qualifying_position": 7,
+          "qualifying_time": 78.262
+        },
+        {
+          "driver_id": 4,
+          "driver_name": "Verstappen",
+          "team": "Red Bull",
+          "predicted_position": 7,
+          "confidence": 0.85,
+          "qualifying_position": 9,
+          "qualifying_time": 79.31
+        },
+        {
+          "driver_id": 6,
+          "driver_name": "Russell",
+          "team": "Mercedes",
+          "predicted_position": 9,
+          "confidence": 0.85,
+          "qualifying_position": 12,
+          "qualifying_time": 81.819
+        },
+        {
+          "driver_id": 11,
+          "driver_name": "Gasly",
+          "team": "Alpine",
+          "predicted_position": 10,
+          "confidence": 0.85,
+          "qualifying_position": 13,
+          "qualifying_time": 81.963
+        },
+        {
+          "driver_id": 7,
+          "driver_name": "Antonelli",
+          "team": "Mercedes",
+          "predicted_position": 12,
+          "confidence": 0.85,
+          "qualifying_position": 8,
+          "qualifying_time": 79.217
+        },
+        {
+          "driver_id": 13,
+          "driver_name": "Colapinto",
+          "team": "Williams",
+          "predicted_position": 11,
+          "confidence": 0.85,
+          "qualifying_position": 10,
+          "qualifying_time": 80.428
+        },
+        {
+          "driver_id": 15,
+          "driver_name": "Lawson",
+          "team": "RB",
+          "predicted_position": 13,
+          "confidence": 0.85,
+          "qualifying_position": 11,
+          "qualifying_time": 81.713
+        },
+        {
+          "driver_id": 14,
+          "driver_name": "Tsunoda",
+          "team": "RB",
+          "predicted_position": 16,
+          "confidence": 0.85,
+          "qualifying_position": 14,
+          "qualifying_time": 83.171
+        },
+        {
+          "driver_id": 17,
+          "driver_name": "Magnussen",
+          "team": "Haas",
+          "predicted_position": 14,
+          "confidence": 0.85,
+          "qualifying_position": 15,
+          "qualifying_time": 83.53
+        },
+        {
+          "driver_id": 16,
+          "driver_name": "Hulkenberg",
+          "team": "Haas",
+          "predicted_position": 15,
+          "confidence": 0.85,
+          "qualifying_position": 18,
+          "qualifying_time": 85.314
+        },
+        {
+          "driver_id": 9,
+          "driver_name": "Stroll",
+          "team": "Aston Martin",
+          "predicted_position": 18,
+          "confidence": 0.85,
+          "qualifying_position": 17,
+          "qualifying_time": 83.572
+        },
+        {
+          "driver_id": 5,
+          "driver_name": "Perez",
+          "team": "Red Bull",
+          "predicted_position": 17,
+          "confidence": 0.85,
+          "qualifying_position": 16,
+          "qualifying_time": 83.542
+        },
+        {
+          "driver_id": 18,
+          "driver_name": "Bottas",
+          "team": "Sauber",
+          "predicted_position": 19,
+          "confidence": 0.85,
+          "qualifying_position": 20,
+          "qualifying_time": 88.805
+        },
+        {
+          "driver_id": 19,
+          "driver_name": "Zhou",
+          "team": "Sauber",
+          "predicted_position": 20,
+          "confidence": 0.85,
+          "qualifying_position": 19,
+          "qualifying_time": 86.943
+        }
+      ],
+      "stage": "qualifying",
+      "timestamp": "2025-07-03T09:10:34.960052",
+      "data_sources": [
+        "season_form",
+        "practice_sessions",
+        "qualifying_results"
+      ]
+    },
+    "pre_race": {
+      "predictions": [
+        {
+          "driver_id": 0,
+          "driver_name": "Piastri",
+          "team": "McLaren",
+          "predicted_position": 1,
+          "confidence": 0.85,
+          "qualifying_position": 1,
+          "qualifying_time": 74.427
+        },
+        {
+          "driver_id": 1,
+          "driver_name": "Norris",
+          "team": "McLaren",
+          "predicted_position": 2,
+          "confidence": 0.85,
+          "qualifying_position": 2,
+          "qualifying_time": 75.319
+        },
+        {
+          "driver_id": 2,
+          "driver_name": "Leclerc",
+          "team": "Ferrari",
+          "predicted_position": 3,
+          "confidence": 0.85,
+          "qualifying_position": 3,
+          "qualifying_time": 76.31
+        },
+        {
+          "driver_id": 3,
+          "driver_name": "Hamilton",
+          "team": "Ferrari",
+          "predicted_position": 4,
+          "confidence": 0.85,
+          "qualifying_position": 4,
+          "qualifying_time": 76.781
+        },
+        {
+          "driver_id": 12,
+          "driver_name": "Sainz",
+          "team": "Williams",
+          "predicted_position": 5,
+          "confidence": 0.85,
+          "qualifying_position": 6,
+          "qualifying_time": 77.921
+        },
+        {
+          "driver_id": 10,
+          "driver_name": "Ocon",
+          "team": "Alpine",
+          "predicted_position": 6,
+          "confidence": 0.85,
+          "qualifying_position": 5,
+          "qualifying_time": 77.761
+        },
+        {
+          "driver_id": 4,
+          "driver_name": "Verstappen",
+          "team": "Red Bull",
+          "predicted_position": 7,
+          "confidence": 0.85,
+          "qualifying_position": 9,
+          "qualifying_time": 79.31
+        },
+        {
+          "driver_id": 8,
+          "driver_name": "Alonso",
+          "team": "Aston Martin",
+          "predicted_position": 8,
+          "confidence": 0.85,
+          "qualifying_position": 7,
+          "qualifying_time": 78.262
+        },
+        {
+          "driver_id": 6,
+          "driver_name": "Russell",
+          "team": "Mercedes",
+          "predicted_position": 9,
+          "confidence": 0.85,
+          "qualifying_position": 12,
+          "qualifying_time": 81.819
+        },
+        {
+          "driver_id": 11,
+          "driver_name": "Gasly",
+          "team": "Alpine",
+          "predicted_position": 10,
+          "confidence": 0.85,
+          "qualifying_position": 13,
+          "qualifying_time": 81.963
+        },
+        {
+          "driver_id": 13,
+          "driver_name": "Colapinto",
+          "team": "Williams",
+          "predicted_position": 11,
+          "confidence": 0.85,
+          "qualifying_position": 10,
+          "qualifying_time": 80.428
+        },
+        {
+          "driver_id": 7,
+          "driver_name": "Antonelli",
+          "team": "Mercedes",
+          "predicted_position": 12,
+          "confidence": 0.85,
+          "qualifying_position": 8,
+          "qualifying_time": 79.217
+        },
+        {
+          "driver_id": 15,
+          "driver_name": "Lawson",
+          "team": "RB",
+          "predicted_position": 13,
+          "confidence": 0.85,
+          "qualifying_position": 11,
+          "qualifying_time": 81.713
+        },
+        {
+          "driver_id": 17,
+          "driver_name": "Magnussen",
+          "team": "Haas",
+          "predicted_position": 14,
+          "confidence": 0.85,
+          "qualifying_position": 15,
+          "qualifying_time": 83.53
+        },
+        {
+          "driver_id": 16,
+          "driver_name": "Hulkenberg",
+          "team": "Haas",
+          "predicted_position": 15,
+          "confidence": 0.85,
+          "qualifying_position": 18,
+          "qualifying_time": 85.314
+        },
+        {
+          "driver_id": 14,
+          "driver_name": "Tsunoda",
+          "team": "RB",
+          "predicted_position": 16,
+          "confidence": 0.85,
+          "qualifying_position": 14,
+          "qualifying_time": 83.171
+        },
+        {
+          "driver_id": 5,
+          "driver_name": "Perez",
+          "team": "Red Bull",
+          "predicted_position": 17,
+          "confidence": 0.85,
+          "qualifying_position": 16,
+          "qualifying_time": 83.542
+        },
+        {
+          "driver_id": 9,
+          "driver_name": "Stroll",
+          "team": "Aston Martin",
+          "predicted_position": 18,
+          "confidence": 0.85,
+          "qualifying_position": 17,
+          "qualifying_time": 83.572
+        },
+        {
+          "driver_id": 18,
+          "driver_name": "Bottas",
+          "team": "Sauber",
+          "predicted_position": 19,
+          "confidence": 0.85,
+          "qualifying_position": 20,
+          "qualifying_time": 88.805
+        },
+        {
+          "driver_id": 19,
+          "driver_name": "Zhou",
+          "team": "Sauber",
+          "predicted_position": 20,
+          "confidence": 0.85,
+          "qualifying_position": 19,
+          "qualifying_time": 86.943
+        }
+      ],
+      "stage": "pre_race",
+      "timestamp": "2025-07-03T09:10:34.960080",
+      "data_sources": [
+        "season_form",
+        "practice_sessions",
+        "qualifying_results",
+        "weather_conditions"
+      ]
+    },
+    "actual": {
+      "results": [
+        {
+          "driver_id": 0,
+          "driver_name": "Piastri",
+          "team": "McLaren",
+          "actual_position": 1,
+          "points": 25,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 1,
+          "driver_name": "Norris",
+          "team": "McLaren",
+          "actual_position": 2,
+          "points": 18,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 2,
+          "driver_name": "Leclerc",
+          "team": "Ferrari",
+          "actual_position": 3,
+          "points": 15,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 3,
+          "driver_name": "Hamilton",
+          "team": "Ferrari",
+          "actual_position": 4,
+          "points": 12,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 10,
+          "driver_name": "Ocon",
+          "team": "Alpine",
+          "actual_position": 5,
+          "points": 10,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 12,
+          "driver_name": "Sainz",
+          "team": "Williams",
+          "actual_position": 6,
+          "points": 8,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 8,
+          "driver_name": "Alonso",
+          "team": "Aston Martin",
+          "actual_position": 7,
+          "points": 6,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 7,
+          "driver_name": "Antonelli",
+          "team": "Mercedes",
+          "actual_position": 8,
+          "points": 4,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 4,
+          "driver_name": "Verstappen",
+          "team": "Red Bull",
+          "actual_position": 9,
+          "points": 2,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 13,
+          "driver_name": "Colapinto",
+          "team": "Williams",
+          "actual_position": 10,
+          "points": 1,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 15,
+          "driver_name": "Lawson",
+          "team": "RB",
+          "actual_position": 11,
+          "points": 0,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 6,
+          "driver_name": "Russell",
+          "team": "Mercedes",
+          "actual_position": 12,
+          "points": 0,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 11,
+          "driver_name": "Gasly",
+          "team": "Alpine",
+          "actual_position": 13,
+          "points": 0,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 14,
+          "driver_name": "Tsunoda",
+          "team": "RB",
+          "actual_position": 14,
+          "points": 0,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 17,
+          "driver_name": "Magnussen",
+          "team": "Haas",
+          "actual_position": 15,
+          "points": 0,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 5,
+          "driver_name": "Perez",
+          "team": "Red Bull",
+          "actual_position": 16,
+          "points": 0,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 9,
+          "driver_name": "Stroll",
+          "team": "Aston Martin",
+          "actual_position": 17,
+          "points": 0,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 16,
+          "driver_name": "Hulkenberg",
+          "team": "Haas",
+          "actual_position": 18,
+          "points": 0,
+          "status": "DNF"
+        },
+        {
+          "driver_id": 19,
+          "driver_name": "Zhou",
+          "team": "Sauber",
+          "actual_position": 19,
+          "points": 0,
+          "status": "Finished"
+        },
+        {
+          "driver_id": 18,
+          "driver_name": "Bottas",
+          "team": "Sauber",
+          "actual_position": 20,
+          "points": 0,
+          "status": "Finished"
+        }
+      ],
+      "stage": "actual",
+      "timestamp": "2025-07-03T09:10:34.960174"
+    }
+  },
+  "accuracy_evaluation": {
+    "baseline": {
+      "mae_position": 3.9,
+      "top3_accuracy": 0.6666666666666666,
+      "winner_correct": false,
+      "total_predictions": 20
+    },
+    "practice": {
+      "mae_position": 4.0,
+      "top3_accuracy": 0.6666666666666666,
+      "winner_correct": false,
+      "total_predictions": 20
+    },
+    "qualifying": {
+      "mae_position": 1.4,
+      "top3_accuracy": 1.0,
+      "winner_correct": true,
+      "total_predictions": 20
+    },
+    "pre_race": {
+      "mae_position": 1.4,
+      "top3_accuracy": 1.0,
+      "winner_correct": true,
+      "total_predictions": 20
+    }
+  },
+  "summary": {
+    "predicted_winner": "Piastri",
+    "predicted_podium": [
+      "Piastri",
+      "Norris",
+      "Leclerc"
+    ],
+    "biggest_surprise": {
+      "driver": "Bottas",
+      "position_change": 8
+    },
+    "confidence_level": 0.85
+  }
+}

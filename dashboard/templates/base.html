@@ -193,6 +193,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('season_standings') }}">
+                            <i class="fas fa-trophy"></i> Standings
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('model_performance') }}">
                             <i class="fas fa-chart-line"></i> Models
                         </a>
@@ -213,8 +218,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('data_quality') }}">
-                            <i class="fas fa-database"></i> Data Quality
+                        <a class="nav-link" href="{{ url_for('race_predictions') }}">
+                            <i class="fas fa-flag-checkered"></i> Race Predictions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('data_monitoring') }}">
+                            <i class="fas fa-database"></i> Data Monitoring
                         </a>
                     </li>
                 </ul>

@@ -1,0 +1,431 @@
+{
+  "data_summary": {
+    "scan_timestamp": "2025-07-03T19:41:54.892230",
+    "seasons": {
+      "2024": {
+        "year": 2024,
+        "races": {
+          "Monaco Grand Prix": {
+            "race_name": "Monaco Grand Prix",
+            "year": 2024,
+            "total_laps": 1226,
+            "total_features": 69,
+            "train_samples": 968,
+            "test_samples": 242,
+            "files": {
+              "raw_data": false,
+              "cleaned_data": true,
+              "features_data": true,
+              "model_ready": true
+            },
+            "file_sizes": {
+              "laps_cleaned.csv": 0.10600662231445312,
+              "laps_features.csv": 0.6987323760986328,
+              "train_data.csv": 1.0314388275146484,
+              "test_data.csv": 0.25869274139404297,
+              "feature_names.csv": 0.0008554458618164062
+            },
+            "data_quality_score": 100.0,
+            "last_modified": "2025-06-29T18:01:26.702117"
+          }
+        },
+        "total_races": 1,
+        "total_laps": 1226,
+        "data_size_mb": 4.76020622253418,
+        "data_quality": {
+          "raw_data_available": 0,
+          "cleaned_data_available": 1,
+          "features_available": 1,
+          "model_ready_available": 1
+        }
+      },
+      "2025": {
+        "year": 2025,
+        "races": {
+          "Bahrain Grand Prix": {
+            "race_name": "Bahrain Grand Prix",
+            "year": 2025,
+            "total_laps": 1114,
+            "total_features": 69,
+            "train_samples": 891,
+            "test_samples": 223,
+            "files": {
+              "raw_data": false,
+              "cleaned_data": true,
+              "features_data": true,
+              "model_ready": true
+            },
+            "file_sizes": {
+              "laps_cleaned.csv": 0.0959920883178711,
+              "laps_features.csv": 0.6238842010498047,
+              "train_data.csv": 0.9446029663085938,
+              "test_data.csv": 0.2364978790283203,
+              "feature_names.csv": 0.0008554458618164062
+            },
+            "data_quality_score": 100.0,
+            "last_modified": "2025-07-03T19:36:21.420561"
+          },
+          "Monaco Grand Prix": {
+            "race_name": "Monaco Grand Prix",
+            "year": 2025,
+            "total_laps": 1423,
+            "total_features": 69,
+            "train_samples": 1138,
+            "test_samples": 285,
+            "files": {
+              "raw_data": false,
+              "cleaned_data": true,
+              "features_data": true,
+              "model_ready": true
+            },
+            "file_sizes": {
+              "laps_cleaned.csv": 0.12288475036621094,
+              "laps_features.csv": 0.8183050155639648,
+              "train_data.csv": 1.2111120223999023,
+              "test_data.csv": 0.30358028411865234,
+              "feature_names.csv": 0.0008554458618164062
+            },
+            "data_quality_score": 100.0,
+            "last_modified": "2025-07-03T19:36:23.879473"
+          },
+          "Japanese Grand Prix": {
+            "race_name": "Japanese Grand Prix",
+            "year": 2025,
+            "total_laps": 1059,
+            "total_features": 69,
+            "train_samples": 847,
+            "test_samples": 212,
+            "files": {
+              "raw_data": false,
+              "cleaned_data": true,
+              "features_data": true,
+              "model_ready": true
+            },
+            "file_sizes": {
+              "laps_cleaned.csv": 0.0908355712890625,
+              "laps_features.csv": 0.6046037673950195,
+              "train_data.csv": 0.9038305282592773,
+              "test_data.csv": 0.2265300750732422,
+              "feature_names.csv": 0.0008554458618164062
+            },
+            "data_quality_score": 100.0,
+            "last_modified": "2025-07-03T19:36:20.100529"
+          },
+          "Chinese Grand Prix": {
+            "race_name": "Chinese Grand Prix",
+            "year": 2025,
+            "total_laps": 1065,
+            "total_features": 69,
+            "train_samples": 852,
+            "test_samples": 213,
+            "files": {
+              "raw_data": false,
+              "cleaned_data": true,
+              "features_data": true,
+              "model_ready": true
+            },
+            "file_sizes": {
+              "laps_cleaned.csv": 0.0914468765258789,
+              "laps_features.csv": 0.6193971633911133,
+              "train_data.csv": 0.9107093811035156,
+              "test_data.csv": 0.22809410095214844,
+              "feature_names.csv": 0.0008554458618164062
+            },
+            "data_quality_score": 100.0,
+            "last_modified": "2025-07-03T19:36:10.393994"
+          },
+          "Saudi Arabian Grand Prix": {
+            "race_name": "Saudi Arabian Grand Prix",
+            "year": 2025,
+            "total_laps": 861,
+            "total_features": 69,
+            "train_samples": 688,
+            "test_samples": 173,
+            "files": {
+              "raw_data": false,
+              "cleaned_data": true,
+              "features_data": true,
+              "model_ready": true
+            },
+            "file_sizes": {
+              "laps_cleaned.csv": 0.07409477233886719,
+              "laps_features.csv": 0.4748725891113281,
+              "train_data.csv": 0.7370872497558594,
+              "test_data.csv": 0.1862316131591797,
+              "feature_names.csv": 0.0008554458618164062
+            },
+            "data_quality_score": 100.0,
+            "last_modified": "2025-07-03T19:36:22.541612"
+          },
+          "Australian Grand Prix": {
+            "race_name": "Australian Grand Prix",
+            "year": 2025,
+            "total_laps": 858,
+            "total_features": 69,
+            "train_samples": 686,
+            "test_samples": 172,
+            "files": {
+              "raw_data": false,
+              "cleaned_data": true,
+              "features_data": true,
+              "model_ready": true
+            },
+            "file_sizes": {
+              "laps_cleaned.csv": 0.0739583969116211,
+              "laps_features.csv": 0.4930868148803711,
+              "train_data.csv": 0.7277965545654297,
+              "test_data.csv": 0.18322181701660156,
+              "feature_names.csv": 0.0008554458618164062
+            },
+            "data_quality_score": 100.0,
+            "last_modified": "2025-07-03T19:36:09.197154"
+          },
+          "Emilia Romagna Grand Prix": {
+            "race_name": "Emilia Romagna Grand Prix",
+            "year": 2025,
+            "total_laps": 1207,
+            "total_features": 0,
+            "train_samples": 0,
+            "test_samples": 0,
+            "files": {
+              "raw_data": true,
+              "cleaned_data": false,
+              "features_data": false,
+              "model_ready": false
+            },
+            "file_sizes": {
+              "laps.csv": 0.3787546157836914,
+              "session_metadata.json": 0.28380775451660156
+            },
+            "data_quality_score": 25,
+            "last_modified": "2025-07-03T19:33:56.198197",
+            "status": "Raw data only"
+          },
+          "Miami Grand Prix": {
+            "race_name": "Miami Grand Prix",
+            "year": 2025,
+            "total_laps": 1005,
+            "total_features": 0,
+            "train_samples": 0,
+            "test_samples": 0,
+            "files": {
+              "raw_data": true,
+              "cleaned_data": false,
+              "features_data": false,
+              "model_ready": false
+            },
+            "file_sizes": {
+              "laps.csv": 0.3107872009277344,
+              "session_metadata.json": 0.28307247161865234
+            },
+            "data_quality_score": 25,
+            "last_modified": "2025-07-03T19:33:43.382070",
+            "status": "Raw data only"
+          },
+          "Pre-Season Testing": {
+            "race_name": "Pre-Season Testing",
+            "year": 2025,
+            "total_laps": 0,
+            "total_features": 0,
+            "train_samples": 0,
+            "test_samples": 0,
+            "files": {
+              "raw_data": false,
+              "cleaned_data": false,
+              "features_data": false,
+              "model_ready": false
+            },
+            "file_sizes": {},
+            "data_quality_score": 0,
+            "last_modified": null,
+            "status": "Raw data only"
+          },
+          "Spanish Grand Prix": {
+            "race_name": "Spanish Grand Prix",
+            "year": 2025,
+            "total_laps": 1203,
+            "total_features": 0,
+            "train_samples": 0,
+            "test_samples": 0,
+            "files": {
+              "raw_data": true,
+              "cleaned_data": false,
+              "features_data": false,
+              "model_ready": false
+            },
+            "file_sizes": {
+              "laps.csv": 0.3780689239501953,
+              "session_metadata.json": 0.283721923828125
+            },
+            "data_quality_score": 25,
+            "last_modified": "2025-07-03T19:34:23.558855",
+            "status": "Raw data only"
+          }
+        },
+        "total_races": 10,
+        "total_laps": 6380,
+        "data_size_mb": 16.606101036071777,
+        "data_quality": {
+          "raw_data_available": 3,
+          "cleaned_data_available": 6,
+          "features_available": 6,
+          "model_ready_available": 6
+        }
+      }
+    },
+    "total_stats": {
+      "total_races": 11,
+      "total_laps": 7606,
+      "total_drivers": 0,
+      "total_features": 0,
+      "data_size_mb": 21.366307258605957
+    }
+  },
+  "pipeline_status": {
+    "2024": {
+      "total_races": 1,
+      "pipeline_stages": {
+        "raw_ingestion": 0.0,
+        "data_cleaning": 100.0,
+        "feature_engineering": 100.0,
+        "model_preparation": 100.0
+      },
+      "completion_percentage": 75.0
+    },
+    "2025": {
+      "total_races": 10,
+      "pipeline_stages": {
+        "raw_ingestion": 30.0,
+        "data_cleaning": 60.0,
+        "feature_engineering": 60.0,
+        "model_preparation": 60.0
+      },
+      "completion_percentage": 52.5
+    }
+  },
+  "feature_analysis": {
+    "total_unique_features": [
+      "pit_stop",
+      "race_phase",
+      "Team",
+      "Compound",
+      "SpeedI1",
+      "SpeedI2",
+      "car_behind_time",
+      "Sector3Time",
+      "tyre_age_normalized",
+      "driver_team_combo",
+      "LapNumber",
+      "race_phase_encoded",
+      "speed_i1_to_fl_ratio",
+      "Driver",
+      "SpeedST",
+      "rolling_avg_lap_time_3",
+      "DriverNumber",
+      "rolling_std_lap_time_10",
+      "best_position_so_far",
+      "lap_delta",
+      "rolling_std_sector1time_5",
+      "worst_lap_so_far",
+      "gap_to_ahead",
+      "rolling_avg_lap_time_5",
+      "gap_to_leader",
+      "max_speed",
+      "speed_consistency",
+      "SpeedFL",
+      "speed_range",
+      "gap_to_behind",
+      "team_best_position",
+      "driver_team_encoded",
+      "Stint",
+      "cumulative_position_change",
+      "car_ahead_time",
+      "rolling_avg_position_3",
+      "Sector1Time",
+      "rolling_std_lap_time_3",
+      "TyreLife",
+      "IsPersonalBest",
+      "rolling_std_lap_time_5",
+      "team_avg_position",
+      "Sector2Time",
+      "rolling_std_sector2time_5",
+      "FreshTyre",
+      "min_speed",
+      "position_change",
+      "fresh_tyre_numeric",
+      "lap_time_percentile",
+      "Position",
+      "personal_bests_count",
+      "compound_life_interaction",
+      "rolling_std_sector3time_5",
+      "laps_in_stint",
+      "position_stint_interaction",
+      "gap_to_teammate"
+    ],
+    "feature_consistency": {
+      "speed_range": 6,
+      "pit_stop": 6,
+      "gap_to_behind": 6,
+      "team_best_position": 6,
+      "race_phase": 6,
+      "driver_team_encoded": 6,
+      "Team": 6,
+      "Stint": 6,
+      "cumulative_position_change": 6,
+      "car_ahead_time": 6,
+      "rolling_avg_position_3": 6,
+      "Sector1Time": 6,
+      "Compound": 6,
+      "SpeedI1": 6,
+      "rolling_std_lap_time_3": 6,
+      "TyreLife": 6,
+      "IsPersonalBest": 6,
+      "rolling_std_lap_time_5": 6,
+      "SpeedI2": 6,
+      "team_avg_position": 6,
+      "car_behind_time": 6,
+      "Sector3Time": 6,
+      "tyre_age_normalized": 6,
+      "Sector2Time": 6,
+      "driver_team_combo": 6,
+      "LapNumber": 6,
+      "race_phase_encoded": 6,
+      "speed_i1_to_fl_ratio": 6,
+      "Driver": 6,
+      "SpeedST": 6,
+      "rolling_avg_lap_time_3": 6,
+      "DriverNumber": 6,
+      "rolling_std_lap_time_10": 6,
+      "rolling_std_sector2time_5": 6,
+      "best_position_so_far": 6,
+      "FreshTyre": 6,
+      "min_speed": 6,
+      "position_change": 6,
+      "fresh_tyre_numeric": 6,
+      "lap_delta": 6,
+      "lap_time_percentile": 6,
+      "Position": 6,
+      "personal_bests_count": 6,
+      "rolling_std_sector1time_5": 6,
+      "worst_lap_so_far": 6,
+      "compound_life_interaction": 6,
+      "gap_to_ahead": 6,
+      "rolling_avg_lap_time_5": 6,
+      "rolling_std_sector3time_5": 6,
+      "gap_to_leader": 6,
+      "laps_in_stint": 6,
+      "position_stint_interaction": 6,
+      "gap_to_teammate": 6,
+      "max_speed": 6,
+      "speed_consistency": 6,
+      "SpeedFL": 6
+    },
+    "average_features_per_race": 69.0,
+    "races_analyzed": 7
+  },
+  "report_metadata": {
+    "generated_at": "2025-07-03T19:41:54.905157",
+    "total_data_size_mb": 21.366307258605957,
+    "monitoring_version": "1.0"
+  }
+}

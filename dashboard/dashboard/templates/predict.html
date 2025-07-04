@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Race Prediction Dashboard</h1>
+<p>Use this interface to view predictions for the F1 races.</p>
+
+<div class="prediction-report">
+    <h2>Prediction Report</h2>
+    {% if dashboard.prediction_report %}
+        <h3>{{ dashboard.prediction_report['race_info']['track'] }} {{ dashboard.prediction_report['race_info']['year'] }}</h3>
+        <p><strong>Predicted Winner: {{ dashboard.prediction_report['summary']['predicted_winner'] }}</strong></p>
+        <ul>
+            <li>Podium: {{ ', '.join(dashboard.prediction_report['summary']['predicted_podium']) }}</li>
+            <li>Confidence Level: {{ dashboard.prediction_report['summary']['confidence_level'] }}</li>
+        </ul>
+    {% else %}
+        <p>No prediction data available.</p>
+    {% endif %}
+</div>
+
+<button id="generate-predictions" class="btn btn-primary">Generate New Predictions</button>
+
+<script>
+    document.getElementById('generate-predictions').onclick = function() {
+        fetch('/api/generate-predictions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Predictions generated successfully');
+            location.reload();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to generate predictions');
+        });
+    }
+</script>
+{% endblock %}

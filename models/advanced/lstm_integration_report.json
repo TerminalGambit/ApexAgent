@@ -1,0 +1,29 @@
+{
+  "timestamp": "2025-07-03T22:26:06.417923",
+  "data_info": {
+    "total_samples": 1226,
+    "train_samples": 968,
+    "test_samples": 242,
+    "features_count": 57
+  },
+  "model_results": {
+    "LSTM": {
+      "rmse": 2.5407422080777113,
+      "r2": 0.2543936639610104,
+      "mae": 1.3132840977718958,
+      "n_predictions": 114
+    },
+    "ElasticNet": {
+      "rmse": Infinity,
+      "r2": -1,
+      "mae": Infinity,
+      "n_predictions": 0
+    }
+  },
+  "best_model": "LSTM",
+  "improvements": {
+    "rmse_improvement": NaN,
+    "best_baseline_rmse": Infinity,
+    "lstm_rmse": 2.5407422080777113
+  }
+}

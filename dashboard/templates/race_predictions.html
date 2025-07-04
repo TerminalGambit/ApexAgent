@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mb-4">🏁 Race Prediction Dashboard</h1>
+    
+    {% if prediction_report %}
+    <div class="row">
+        <!-- Race Info Card -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4>📊 {{ prediction_report.race_info.track }} {{ prediction_report.race_info.year }}</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>🏆 Predicted Winner:</strong> <span class="badge badge-success">{{ prediction_report.summary.predicted_winner }}</span></p>
+                    <p><strong>🥉 Predicted Podium:</strong></p>
+                    <ul class="list-inline">
+                        {% for driver in prediction_report.summary.predicted_podium %}
+                        <li class="list-inline-item">
+                            <span class="badge badge-{% if loop.index == 1 %}warning{% elif loop.index == 2 %}secondary{% else %}info{% endif %}">
+                                {{ loop.index }}. {{ driver }}
+                            </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <p><strong>🎯 Confidence Level:</strong> 
+                        <span class="badge badge-primary">{{ (prediction_report.summary.confidence_level * 100) | round(1) }}%</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Accuracy Card -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4>📈 Prediction Accuracy</h4>
+                </div>
+                <div class="card-body">
+                    {% if prediction_report.accuracy_evaluation %}
+                        {% set final_eval = prediction_report.accuracy_evaluation.pre_race %}
+                        <p><strong>Position MAE:</strong> 
+                            <span class="badge badge-info">{{ final_eval.mae_position | round(2) }} positions</span>
+                        </p>
+                        <p><strong>Top 3 Accuracy:</strong> 
+                            <span class="badge badge-success">{{ (final_eval.top3_accuracy * 100) | round(1) }}%</span>
+                        </p>
+                        <p><strong>Winner Correct:</strong> 
+                            <span class="badge badge-{% if final_eval.winner_correct %}success{% else %}danger{% endif %}">
+                                {% if final_eval.winner_correct %}✅ Yes{% else %}❌ No{% endif %}
+                            </span>
+                        </p>
+                    {% else %}
+                        <p class="text-muted">Accuracy evaluation not available</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Prediction Timeline -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h4>🕐 Prediction Timeline</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Stage</th>
+                                    <th>Predicted Winner</th>
+                                    <th>Top 3</th>
+                                    <th>Confidence</th>
+                                    <th>Data Sources</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for stage_name, stage_data in prediction_report.prediction_stages.items() %}
+                                    {% if stage_name != 'actual' and stage_data.predictions %}
+                                    <tr>
+                                        <td>
+                                            <span class="badge badge-{% if stage_name == 'baseline' %}secondary{% elif stage_name == 'practice' %}warning{% elif stage_name == 'qualifying' %}info{% else %}success{% endif %}">
+                                                {{ stage_name.title() }}
+                                            </span>
+                                        </td>
+                                        <td><strong>{{ stage_data.predictions[0].driver_name }}</strong></td>
+                                        <td>
+                                            {% for driver in stage_data.predictions[:3] %}
+                                                {{ driver.driver_name }}{% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-primary">{{ (stage_data.predictions[0].confidence * 100) | round(1) }}%</span>
+                                        </td>
+                                        <td>
+                                            <small class="text-muted">
+                                                {% for source in stage_data.data_sources %}
+                                                    {{ source.replace('_', ' ').title() }}{% if not loop.last %}, {% endif %}
+                                                {% endfor %}
+                                            </small>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Current Predictions Table -->
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h4>🏁 Final Race Predictions</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Driver</th>
+                                    <th>Team</th>
+                                    <th>Confidence</th>
+                                    {% if prediction_report.prediction_stages.qualifying %}
+                                    <th>Qualifying Position</th>
+                                    {% endif %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if prediction_report.prediction_stages.pre_race %}
+                                    {% for prediction in prediction_report.prediction_stages.pre_race.predictions %}
+                                    <tr class="{% if prediction.predicted_position <= 3 %}table-warning{% endif %}">
+                                        <td>
+                                            <span class="badge badge-{% if prediction.predicted_position == 1 %}warning{% elif prediction.predicted_position <= 3 %}secondary{% elif prediction.predicted_position <= 10 %}info{% else %}light{% endif %} badge-lg">
+                                                {{ prediction.predicted_position }}
+                                            </span>
+                                        </td>
+                                        <td><strong>{{ prediction.driver_name }}</strong></td>
+                                        <td>{{ prediction.team }}</td>
+                                        <td>
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar" role="progressbar" 
+                                                     style="width: {{ (prediction.confidence * 100) | round(0) }}%"
+                                                     aria-valuenow="{{ (prediction.confidence * 100) | round(0) }}" 
+                                                     aria-valuemin="0" aria-valuemax="100">
+                                                    {{ (prediction.confidence * 100) | round(1) }}%
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {% if prediction.qualifying_position %}
+                                        <td>P{{ prediction.qualifying_position }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Actual Results Comparison -->
+    {% if prediction_report.prediction_stages.actual %}
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card border-success">
+                <div class="card-header bg-success text-white">
+                    <h4>🎯 Actual Race Results</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Driver</th>
+                                    <th>Team</th>
+                                    <th>Points</th>
+                                    <th>Status</th>
+                                    <th>Prediction Accuracy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for result in prediction_report.prediction_stages.actual.results %}
+                                <tr>
+                                    <td>
+                                        <span class="badge badge-{% if result.actual_position == 1 %}warning{% elif result.actual_position <= 3 %}secondary{% elif result.actual_position <= 10 %}info{% else %}light{% endif %}">
+                                            {{ result.actual_position }}
+                                        </span>
+                                    </td>
+                                    <td><strong>{{ result.driver_name }}</strong></td>
+                                    <td>{{ result.team }}</td>
+                                    <td>{{ result.points }}</td>
+                                    <td>
+                                        <span class="badge badge-{% if result.status == 'Finished' %}success{% else %}danger{% endif %}">
+                                            {{ result.status }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        {% set predicted_pos = None %}
+                                        {% for pred in prediction_report.prediction_stages.pre_race.predictions %}
+                                            {% if pred.driver_id == result.driver_id %}
+                                                {% set predicted_pos = pred.predicted_position %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if predicted_pos %}
+                                            {% set accuracy = (predicted_pos - result.actual_position) | abs %}
+                                            <span class="badge badge-{% if accuracy == 0 %}success{% elif accuracy <= 2 %}warning{% else %}danger{% endif %}">
+                                                {% if accuracy == 0 %}✅ Perfect{% else %}±{{ accuracy }}{% endif %}
+                                            </span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% else %}
+    <!-- No Prediction Data -->
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">⚠️ No Prediction Data Available</h4>
+                <p>Race prediction data is not currently available. This could be because:</p>
+                <ul>
+                    <li>The prediction system hasn't been run yet</li>
+                    <li>There was an error loading the prediction data</li>
+                    <li>The prediction files are missing</li>
+                </ul>
+                <hr>
+                <button id="generate-predictions" class="btn btn-primary">
+                    🚀 Generate New Predictions
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Action Buttons -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <button id="refresh-predictions" class="btn btn-outline-primary mr-2">
+                        🔄 Refresh Data
+                    </button>
+                    <button id="generate-new-predictions" class="btn btn-success mr-2">
+                        ⚡ Generate New Predictions
+                    </button>
+                    <button id="export-report" class="btn btn-info">
+                        📥 Export Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Refresh predictions
+document.getElementById('refresh-predictions').onclick = function() {
+    location.reload();
+}
+
+// Generate new predictions
+document.getElementById('generate-new-predictions').onclick = function() {
+    this.innerHTML = '⏳ Generating...';
+    this.disabled = true;
+    
+    fetch('/api/generate-predictions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('✅ Predictions generated successfully!');
+            location.reload();
+        } else {
+            alert('❌ Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('❌ Failed to generate predictions');
+    })
+    .finally(() => {
+        this.innerHTML = '⚡ Generate New Predictions';
+        this.disabled = false;
+    });
+}
+
+// Export report
+document.getElementById('export-report').onclick = function() {
+    fetch('/api/prediction-data')
+    .then(response => response.json())
+    .then(data => {
+        const dataStr = JSON.stringify(data, null, 2);
+        const dataBlob = new Blob([dataStr], {type: 'application/json'});
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'race_prediction_report.json';
+        link.click();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('❌ Failed to export report');
+    });
+}
+</script>
+{% endblock %}

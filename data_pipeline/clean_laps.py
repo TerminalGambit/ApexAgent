@@ -31,8 +31,10 @@ def time_to_seconds(t):
         return np.nan
 
 def clean_laps(year, race_name, debug=False):
-    input_path = f"data/raw/{year}/{race_name}/laps.csv"
-    output_dir = f"data/processed/{year}/{race_name}"
+    # Convert race name to directory name (replace spaces with underscores)
+    race_dir_name = race_name.replace(" ", "_")
+    input_path = f"data/raw/{year}/{race_dir_name}/laps.csv"
+    output_dir = f"data/processed/{year}/{race_dir_name}"
     output_path = f"{output_dir}/laps_cleaned.csv"
     if not os.path.exists(input_path):
         logging.error(f"File not found: {input_path}")

@@ -1,0 +1,87 @@
+{
+  "timestamp": "2025-07-03T22:27:35.100700",
+  "experiment_config": {
+    "data_source": "../../data/processed/2024/Monaco Grand Prix",
+    "total_samples": 1226,
+    "train_samples": 968,
+    "test_samples": 242,
+    "features_used": 26,
+    "feature_list": [
+      "Sector1Time",
+      "Sector2Time",
+      "Sector3Time",
+      "TyreLife",
+      "Position",
+      "LapNumber",
+      "SpeedI1",
+      "SpeedI2",
+      "SpeedFL",
+      "SpeedST",
+      "gap_to_leader",
+      "gap_to_ahead",
+      "gap_to_behind",
+      "rolling_avg_lap_time_3",
+      "rolling_avg_lap_time_5",
+      "rolling_avg_position_3",
+      "tyre_age_normalized",
+      "laps_in_stint",
+      "speed_consistency",
+      "speed_range",
+      "car_ahead_time",
+      "car_behind_time",
+      "lap_time_percentile",
+      "personal_bests_count",
+      "team_avg_position",
+      "rolling_std_lap_time_3"
+    ]
+  },
+  "model_results": {
+    "RandomForest": {
+      "rmse": 0.39474332097365217,
+      "r2": 0.9893361413058835,
+      "mae": 0.15478863636363707,
+      "n_predictions": 242
+    },
+    "ElasticNet": {
+      "rmse": 0.3484138851989548,
+      "r2": 0.9916923974778952,
+      "mae": 0.20501663459401376,
+      "n_predictions": 242
+    },
+    "LSTM": {
+      "rmse": 2.619474584612464,
+      "r2": 0.07454423771878949,
+      "mae": 1.746882300389956,
+      "n_predictions": 146
+    }
+  },
+  "rankings": {
+    "by_rmse": [
+      "ElasticNet",
+      "RandomForest",
+      "LSTM"
+    ],
+    "by_r2": [
+      "ElasticNet",
+      "RandomForest",
+      "LSTM"
+    ],
+    "by_mae": [
+      "RandomForest",
+      "ElasticNet",
+      "LSTM"
+    ]
+  },
+  "analysis": {
+    "best_model": "ElasticNet",
+    "worst_model": "LSTM",
+    "rmse_range": 2.271060699413509,
+    "rmse_improvement_over_worst": 86.69909273998546,
+    "lstm_vs_best_traditional": {
+      "best_traditional_model": "ElasticNet",
+      "lstm_rmse": 2.619474584612464,
+      "traditional_rmse": 0.3484138851989548,
+      "improvement_percentage": -651.8284132438251
+    }
+  }
+}

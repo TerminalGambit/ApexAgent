@@ -1,3 +1,11 @@
 fastf1
 pandas
 jupyter
+requests
+numpy
+matplotlib
+seaborn
+flask
+plotly
+joblib
+scikit-learn

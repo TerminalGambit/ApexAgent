@@ -22,12 +22,14 @@ def prepare_model_data(year, race_name, target_variable='LapTime', test_size=0.2
     print("Starting data preparation for {} {}...".format(year, race_name))
     
     # Load feature data
-    input_path = "data/processed/{}/{}/laps_features.csv".format(year, race_name)
+    # Convert race name to directory name (replace spaces with underscores)
+    race_dir_name = race_name.replace(" ", "_")
+    input_path = "data/processed/{}/{}/laps_features.csv".format(year, race_dir_name)
     df = pd.read_csv(input_path)
     print("Loaded dataset with {} rows and {} columns".format(df.shape[0], df.shape[1]))
     
     # Create output directory
-    output_dir = "data/processed/{}/{}/".format(year, race_name)
+    output_dir = "data/processed/{}/{}/".format(year, race_dir_name)
     os.makedirs(output_dir, exist_ok=True)
     
     # Remove highly correlated features based on previous analysis

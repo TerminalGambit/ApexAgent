@@ -1,0 +1,399 @@
+{% extends "base.html" %}
+
+{% block title %}Data Monitoring - F1 ML Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    {% if error %}
+    <!-- Error Display -->
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Data Monitoring Error</h4>
+        <p>{{ error }}</p>
+        <hr>
+        <p class="mb-0">Please check the data pipeline and try again.</p>
+    </div>
+    {% else %}
+    
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">
+                        <i class="fas fa-database"></i> Data Monitoring Center
+                    </h1>
+                    <p class="hero-subtitle">
+                        Comprehensive monitoring and analysis of F1 ML data pipeline across all seasons
+                    </p>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <button class="btn btn-f1 btn-lg" onclick="refreshData()">
+                        <i class="fas fa-sync-alt"></i> Refresh Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if monitoring_data %}
+    <!-- Summary Statistics -->
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <h2>{{ monitoring_data.data_summary.total_stats.total_races }}</h2>
+                    <p>Total Races</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <h2>{{ "{:,}".format(monitoring_data.data_summary.total_stats.total_laps) }}</h2>
+                    <p>Total Laps</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <h2>{{ "%.1f"|format(monitoring_data.data_summary.total_stats.data_size_mb) }}</h2>
+                    <p>Data Size (MB)</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stats-card">
+                    <h2>{{ "%.0f"|format(monitoring_data.feature_analysis.average_features_per_race) }}</h2>
+                    <p>Avg Features/Race</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pipeline Status Visualization -->
+    <div class="container mb-5">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-cogs"></i> Data Pipeline Status</h3>
+            </div>
+            <div class="card-body">
+                <div id="pipeline-chart"></div>
+                <div class="row mt-4">
+                    {% for year, status in monitoring_data.pipeline_status.items() %}
+                    <div class="col-md-6">
+                        <h5>{{ year }} Pipeline Completion</h5>
+                        <div class="progress mb-2">
+                            <div class="progress-bar bg-success" style="width: {{ "%.0f"|format(status.completion_percentage) }}%">
+                                {{ "%.0f"|format(status.completion_percentage) }}%
+                            </div>
+                        </div>
+                        <small class="text-muted">{{ status.total_races }} races processed</small>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Volume Analysis -->
+    <div class="container mb-5">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-chart-bar"></i> Data Volume Analysis</h3>
+            </div>
+            <div class="card-body">
+                <div id="size-chart"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Race-by-Race Data Quality -->
+    <div class="container mb-5">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-list-alt"></i> Race-by-Race Data Quality</h3>
+            </div>
+            <div class="card-body">
+                {% for year, year_data in monitoring_data.data_summary.seasons.items() %}
+                {% if year_data %}
+                <h4>{{ year }} Season</h4>
+                <div class="table-responsive mb-4">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Race</th>
+                                <th>Total Laps</th>
+                                <th>Features</th>
+                                <th>Train Samples</th>
+                                <th>Test Samples</th>
+                                <th>Quality Score</th>
+                                <th>Status</th>
+                                <th>Last Modified</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for race_name, race_data in year_data.races.items() %}
+                            <tr>
+                                <td><strong>{{ race_name }}</strong></td>
+                                <td>{{ "{:,}".format(race_data.total_laps) }}</td>
+                                <td>{{ race_data.total_features or '-' }}</td>
+                                <td>{{ "{:,}".format(race_data.train_samples) if race_data.train_samples else '-' }}</td>
+                                <td>{{ "{:,}".format(race_data.test_samples) if race_data.test_samples else '-' }}</td>
+                                <td>
+                                    <div class="progress" style="width: 80px;">
+                                        {% set quality_score = race_data.data_quality_score or 0 %}
+                                        {% if quality_score >= 80 %}
+                                            {% set progress_class = 'bg-success' %}
+                                        {% elif quality_score >= 60 %}
+                                            {% set progress_class = 'bg-warning' %}
+                                        {% else %}
+                                            {% set progress_class = 'bg-danger' %}
+                                        {% endif %}
+                                        <div class="progress-bar {{ progress_class }}" style="width: {{ quality_score }}%">
+                                            {{ "%.0f"|format(quality_score) }}%
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {% if race_data.files.model_ready %}
+                                        <span class="badge bg-success">Ready for ML</span>
+                                    {% elif race_data.files.features_data %}
+                                        <span class="badge bg-warning">Features Available</span>
+                                    {% elif race_data.files.cleaned_data %}
+                                        <span class="badge bg-info">Cleaned Data</span>
+                                    {% elif race_data.files.raw_data %}
+                                        <span class="badge bg-secondary">Raw Data Only</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">No Data</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if race_data.last_modified %}
+                                        <small>{{ race_data.last_modified[:10] }}</small>
+                                    {% else %}
+                                        <small class="text-muted">-</small>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Consistency Analysis -->
+    <div class="container mb-5">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-puzzle-piece"></i> Feature Consistency Analysis</h3>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="metric-box">
+                            <div class="metric-value">{{ monitoring_data.feature_analysis.total_unique_features|length }}</div>
+                            <div class="metric-label">Total Unique Features</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-box">
+                            <div class="metric-value">{{ monitoring_data.feature_analysis.races_analyzed }}</div>
+                            <div class="metric-label">Races Analyzed</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="metric-box">
+                            <div class="metric-value">{{ "%.1f"|format(monitoring_data.feature_analysis.average_features_per_race) }}</div>
+                            <div class="metric-label">Avg Features per Race</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="feature-chart"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pipeline Recommendations -->
+    <div class="container mb-5">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-lightbulb"></i> Pipeline Recommendations</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Data Quality Issues</h5>
+                        <ul class="list-group list-group-flush">
+                            {% set issues = [] %}
+                            {% for year, year_data in monitoring_data.data_summary.seasons.items() %}
+                                {% if year_data %}
+                                    {% for race_name, race_data in year_data.races.items() %}
+                                        {% if race_data.data_quality_score < 80 %}
+                                            {% set _ = issues.append((race_name, race_data.data_quality_score, year)) %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if issues %}
+                                {% for issue in issues %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ issue[0] }} ({{ issue[2] }})
+                                    <span class="badge bg-warning rounded-pill">{{ "%.0f"|format(issue[1]) }}% quality</span>
+                                </li>
+                                {% endfor %}
+                            {% else %}
+                                <li class="list-group-item text-success">
+                                    <i class="fas fa-check"></i> All races meet quality standards
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Next Actions</h5>
+                        <ul class="list-group list-group-flush">
+                            {% set incomplete_races = [] %}
+                            {% for year, year_data in monitoring_data.data_summary.seasons.items() %}
+                                {% if year_data %}
+                                    {% for race_name, race_data in year_data.races.items() %}
+                                        {% if not race_data.files.model_ready %}
+                                            {% set _ = incomplete_races.append((race_name, year)) %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if incomplete_races %}
+                                {% for race in incomplete_races[:5] %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Process {{ race[0] }} ({{ race[1] }})
+                                    <span class="badge bg-primary rounded-pill">Pending</span>
+                                </li>
+                                {% endfor %}
+                                {% if incomplete_races|length > 5 %}
+                                <li class="list-group-item text-muted">
+                                    ... and {{ incomplete_races|length - 5 }} more races
+                                </li>
+                                {% endif %}
+                            {% else %}
+                                <li class="list-group-item text-success">
+                                    <i class="fas fa-check"></i> All races are ML-ready
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Metadata -->
+    <div class="container mb-5">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-info-circle"></i> Monitoring Report Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Generated At:</strong> {{ monitoring_data.report_metadata.generated_at[:19] }}</p>
+                        <p><strong>Total Data Size:</strong> {{ "%.1f"|format(monitoring_data.report_metadata.total_data_size_mb) }} MB</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Monitoring Version:</strong> {{ monitoring_data.report_metadata.monitoring_version }}</p>
+                        <p><strong>Last Scan:</strong> {{ monitoring_data.data_summary.scan_timestamp[:19] }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <!-- No Data Available -->
+    <div class="container">
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">No Monitoring Data Available</h4>
+            <p>The data monitoring system couldn't find any data to analyze. This might be because:</p>
+            <ul>
+                <li>The data pipeline hasn't been run yet</li>
+                <li>Data files are not in the expected locations</li>
+                <li>The monitoring system needs to be refreshed</li>
+            </ul>
+            <hr>
+            <p class="mb-0">
+                <button class="btn btn-f1" onclick="refreshData()">
+                    <i class="fas fa-sync-alt"></i> Try Refreshing Data
+                </button>
+            </p>
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+
+<script>
+    // Render Plotly charts
+    {% if monitoring_data %}
+    Plotly.newPlot('pipeline-chart', {{ pipeline_chart|safe }});
+    Plotly.newPlot('size-chart', {{ size_chart|safe }});
+    Plotly.newPlot('feature-chart', {{ feature_chart|safe }});
+    {% endif %}
+    
+    function refreshData() {
+        showLoading();
+        // Force refresh by reloading the page
+        window.location.reload();
+    }
+    
+    // Auto-refresh every 5 minutes
+    setInterval(function() {
+        console.log('Auto-refreshing monitoring data...');
+        window.location.reload();
+    }, 300000); // 5 minutes
+</script>
+{% endblock %}
+
+{% block scripts %}
+<style>
+    .progress {
+        height: 20px;
+    }
+    
+    .metric-box {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 15px;
+        padding: 30px 20px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .metric-box .metric-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: white;
+    }
+    
+    .metric-box .metric-label {
+        color: rgba(255,255,255,0.8);
+        font-weight: 500;
+        margin-top: 10px;
+    }
+    
+    .table th {
+        border-top: none;
+    }
+    
+    .badge {
+        font-size: 0.8rem;
+    }
+    
+    .hero-section {
+        background: linear-gradient(135deg, var(--f1-black), #333);
+        color: white;
+        padding: 60px 0;
+        margin-bottom: 40px;
+        border-radius: 0 0 30px 30px;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,306 @@
+{
+  "drivers": [
+    [
+      0,
+      {
+        "name": "Piastri",
+        "team": "McLaren",
+        "points": 224,
+        "wins": 8,
+        "podiums": 8,
+        "races": 10
+      }
+    ],
+    [
+      1,
+      {
+        "name": "Norris",
+        "team": "McLaren",
+        "points": 200,
+        "wins": 2,
+        "podiums": 11,
+        "races": 11
+      }
+    ],
+    [
+      2,
+      {
+        "name": "Leclerc",
+        "team": "Ferrari",
+        "points": 175,
+        "wins": 1,
+        "podiums": 10,
+        "races": 10
+      }
+    ],
+    [
+      3,
+      {
+        "name": "Hamilton",
+        "team": "Ferrari",
+        "points": 119,
+        "wins": 0,
+        "podiums": 1,
+        "races": 10
+      }
+    ],
+    [
+      12,
+      {
+        "name": "Sainz",
+        "team": "Williams",
+        "points": 84,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      6,
+      {
+        "name": "Russell",
+        "team": "Mercedes",
+        "points": 76,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      10,
+      {
+        "name": "Ocon",
+        "team": "Alpine",
+        "points": 41,
+        "wins": 0,
+        "podiums": 0,
+        "races": 10
+      }
+    ],
+    [
+      4,
+      {
+        "name": "Verstappen",
+        "team": "Red Bull",
+        "points": 36,
+        "wins": 0,
+        "podiums": 0,
+        "races": 10
+      }
+    ],
+    [
+      11,
+      {
+        "name": "Gasly",
+        "team": "Alpine",
+        "points": 29,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      8,
+      {
+        "name": "Alonso",
+        "team": "Aston Martin",
+        "points": 17,
+        "wins": 0,
+        "podiums": 0,
+        "races": 10
+      }
+    ],
+    [
+      13,
+      {
+        "name": "Colapinto",
+        "team": "Williams",
+        "points": 17,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      7,
+      {
+        "name": "Antonelli",
+        "team": "Mercedes",
+        "points": 13,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      5,
+      {
+        "name": "Perez",
+        "team": "Red Bull",
+        "points": 10,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      9,
+      {
+        "name": "Stroll",
+        "team": "Aston Martin",
+        "points": 1,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      14,
+      {
+        "name": "Tsunoda",
+        "team": "RB",
+        "points": 1,
+        "wins": 0,
+        "podiums": 0,
+        "races": 10
+      }
+    ],
+    [
+      15,
+      {
+        "name": "Lawson",
+        "team": "RB",
+        "points": 0,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      16,
+      {
+        "name": "Hulkenberg",
+        "team": "Haas",
+        "points": 0,
+        "wins": 0,
+        "podiums": 0,
+        "races": 10
+      }
+    ],
+    [
+      17,
+      {
+        "name": "Magnussen",
+        "team": "Haas",
+        "points": 0,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      18,
+      {
+        "name": "Bottas",
+        "team": "Sauber",
+        "points": 0,
+        "wins": 0,
+        "podiums": 0,
+        "races": 11
+      }
+    ],
+    [
+      19,
+      {
+        "name": "Zhou",
+        "team": "Sauber",
+        "points": 0,
+        "wins": 0,
+        "podiums": 0,
+        "races": 10
+      }
+    ]
+  ],
+  "teams": [
+    [
+      "McLaren",
+      {
+        "points": 424,
+        "wins": 10,
+        "podiums": 19
+      }
+    ],
+    [
+      "Ferrari",
+      {
+        "points": 294,
+        "wins": 1,
+        "podiums": 11
+      }
+    ],
+    [
+      "Williams",
+      {
+        "points": 101,
+        "wins": 0,
+        "podiums": 0
+      }
+    ],
+    [
+      "Mercedes",
+      {
+        "points": 89,
+        "wins": 0,
+        "podiums": 0
+      }
+    ],
+    [
+      "Alpine",
+      {
+        "points": 70,
+        "wins": 0,
+        "podiums": 0
+      }
+    ],
+    [
+      "Red Bull",
+      {
+        "points": 46,
+        "wins": 0,
+        "podiums": 0
+      }
+    ],
+    [
+      "Aston Martin",
+      {
+        "points": 18,
+        "wins": 0,
+        "podiums": 0
+      }
+    ],
+    [
+      "RB",
+      {
+        "points": 1,
+        "wins": 0,
+        "podiums": 0
+      }
+    ],
+    [
+      "Sauber",
+      {
+        "points": 0,
+        "wins": 0,
+        "podiums": 0
+      }
+    ],
+    [
+      "Haas",
+      {
+        "points": 0,
+        "wins": 0,
+        "podiums": 0
+      }
+    ]
+  ]
+}

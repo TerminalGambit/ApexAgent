@@ -1,0 +1,9 @@
+,value
+target_variable,LapTime
+n_features,56
+n_train_samples,852
+n_test_samples,213
+test_size,0.2
+random_state,42
+features_removed,"['laps_completed', 'race_progress', 'leader_lap_time', 'team_avg_lap_time', 'best_lap_so_far', 'pit_stop_count', 'compound_age_ratio', 'rolling_avg_position_5', 'rolling_avg_lap_time_10', 'avg_lap_so_far', 'worst_position_so_far', 'speed_improvement']"
+categorical_columns,"['race_phase', 'driver_team_combo']"

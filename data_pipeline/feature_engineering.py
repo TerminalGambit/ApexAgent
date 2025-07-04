@@ -17,7 +17,9 @@ class F1FeatureEngineer:
         
     def load_data(self, year, race_name):
         """Load cleaned lap data."""
-        input_path = "data/processed/{}/{}/laps_cleaned.csv".format(year, race_name)
+        # Convert race name to directory name (replace spaces with underscores)
+        race_dir_name = race_name.replace(" ", "_")
+        input_path = "data/processed/{}/{}/laps_cleaned.csv".format(year, race_dir_name)
         if not os.path.exists(input_path):
             raise FileNotFoundError("Cleaned data not found: {}".format(input_path))
         
@@ -251,7 +253,9 @@ class F1FeatureEngineer:
     
     def save_features(self, df, year, race_name):
         """Save engineered features to CSV."""
-        output_dir = "data/processed/{}/{}".format(year, race_name)
+        # Convert race name to directory name (replace spaces with underscores)
+        race_dir_name = race_name.replace(" ", "_")
+        output_dir = "data/processed/{}/{}".format(year, race_dir_name)
         output_path = "{}/laps_features.csv".format(output_dir)
         
         os.makedirs(output_dir, exist_ok=True)

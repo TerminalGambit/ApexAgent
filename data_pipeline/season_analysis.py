@@ -5,6 +5,16 @@ import seaborn as sns
 from datetime import datetime
 import os
 import json
+from pathlib import Path
+
+# Import API integration module
+try:
+    from .api_integration import F1APIIntegration
+except ImportError:
+    # Handle relative import for direct execution
+    import sys
+    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+    from api_integration import F1APIIntegration
 
 
 class SeasonStandingsAnalyzer:
@@ -12,32 +22,424 @@ class SeasonStandingsAnalyzer:
     Analyze current season standings and driver performance trends
     """
     
-    def __init__(self, year=2025):
+    def __init__(self, year=2025, use_real_data=True):
         self.year = year
+        self.use_real_data = use_real_data
         self.data_dir = f"data/processed/{year}/"
         self.output_dir = f"data/analysis/{year}/"
         os.makedirs(self.output_dir, exist_ok=True)
         
-        # 2025 Driver mappings with championship-leading Piastri
+        # Initialize empty mappings - will be loaded dynamically
+        self.driver_mapping = {}
+        self.team_mapping = {}
+        
+        # Load driver and team mappings from scenario data
+        self._load_driver_team_mappings()
+        
+        # Load performance projections from scenario data if available
+        self.performance_projections = self._load_performance_projections()
+        
+        # Initialize API integration
+        self.api_integration = None
+        self.api_data = None
+    
+    def _load_performance_projections(self):
+        """Load performance projections from scenario data"""
+        scenario_path = f"data/scenarios/f1_{self.year}_season_scenario.json"
+        if os.path.exists(scenario_path):
+            try:
+                with open(scenario_path, 'r') as f:
+                    scenario_data = json.load(f)
+                
+                if 'drivers' in scenario_data:
+                    projections = {}
+                    for driver_info in scenario_data['drivers'].values():
+                        projections[driver_info['name']] = driver_info.get('performance', 1.0)
+                    return projections
+            except Exception as e:
+                print(f"⚠️ Could not load performance projections: {e}")
+        
+        # Fallback to default projections
+        return {
+            "Piastri": 0.945, "Norris": 0.960, "Verstappen": 0.980, "Perez": 1.020,
+            "Leclerc": 0.965, "Hamilton": 0.975, "Russell": 0.990, "Antonelli": 1.060,
+            "Alonso": 1.005, "Stroll": 1.040, "Ocon": 1.015, "Gasly": 1.025,
+            "Sainz": 0.995, "Colapinto": 1.080, "Tsunoda": 1.035, "Lawson": 1.070,
+            "Hulkenberg": 1.045, "Magnussen": 1.065, "Bottas": 1.055, "Zhou": 1.075
+        }
+    
+    def _load_driver_team_mappings(self):
+        """Load driver and team mappings from scenario or API cache files"""
+        print("🔄 Loading driver and team mappings from data files...")
+        
+        # Try to load from scenario file first
+        scenario_path = f"data/scenarios/f1_{self.year}_season_scenario.json"
+        if os.path.exists(scenario_path):
+            try:
+                with open(scenario_path, 'r') as f:
+                    scenario_data = json.load(f)
+                
+                # Extract driver mappings
+                if 'drivers' in scenario_data:
+                    for driver_id, driver_info in scenario_data['drivers'].items():
+                        self.driver_mapping[int(driver_id)] = driver_info['name']
+                    
+                    # Create team mapping from drivers (every 2 drivers per team typically)
+                    teams_seen = {}
+                    team_id = 0
+                    for driver_id, driver_info in scenario_data['drivers'].items():
+                        team_name = driver_info['team']
+                        if team_name not in teams_seen:
+                            teams_seen[team_name] = team_id
+                            self.team_mapping[team_id] = team_name
+                            team_id += 1
+                
+                print(f"✅ Loaded {len(self.driver_mapping)} drivers and {len(self.team_mapping)} teams from scenario file")
+                return
+                
+            except Exception as e:
+                print(f"⚠️ Failed to load scenario file: {e}")
+        
+        # Fallback to API cache file
+        api_cache_path = f"data/api_cache/pipeline_data_{self.year if self.year <= 2024 else 2024}.json"
+        if os.path.exists(api_cache_path):
+            try:
+                with open(api_cache_path, 'r') as f:
+                    api_data = json.load(f)
+                
+                # Load mappings from API cache
+                if 'driver_mapping' in api_data:
+                    for driver_id, driver_name in api_data['driver_mapping'].items():
+                        # Extract last name from full name
+                        last_name = driver_name.split()[-1] if ' ' in driver_name else driver_name
+                        self.driver_mapping[int(driver_id)] = last_name
+                
+                if 'team_mapping' in api_data:
+                    for team_id, team_name in api_data['team_mapping'].items():
+                        # Simplify team names
+                        simplified_name = team_name.split()[0] if ' ' in team_name else team_name
+                        self.team_mapping[int(team_id)] = simplified_name
+                
+                print(f"✅ Loaded {len(self.driver_mapping)} drivers and {len(self.team_mapping)} teams from API cache")
+                return
+                
+            except Exception as e:
+                print(f"⚠️ Failed to load API cache file: {e}")
+        
+        # Final fallback to hardcoded 2025 mappings
+        print("⚠️ Using fallback hardcoded mappings for 2025 season")
         self.driver_mapping = {
-            0: "Piastri", 1: "Norris", 2: "Verstappen", 3: "Perez", 
-            4: "Leclerc", 5: "Hamilton", 6: "Russell", 7: "Sainz",
+            0: "Piastri", 1: "Norris", 2: "Leclerc", 3: "Hamilton",
+            4: "Verstappen", 5: "Perez", 6: "Russell", 7: "Antonelli",
             8: "Alonso", 9: "Stroll", 10: "Ocon", 11: "Gasly",
-            12: "Albon", 13: "Colapinto", 14: "Tsunoda", 15: "Lawson",
+            12: "Sainz", 13: "Colapinto", 14: "Tsunoda", 15: "Lawson",
             16: "Hulkenberg", 17: "Magnussen", 18: "Bottas", 19: "Zhou"
         }
         
         self.team_mapping = {
-            0: "McLaren", 1: "Red Bull", 2: "Ferrari", 3: "Mercedes",
+            0: "McLaren", 1: "Ferrari", 2: "Red Bull", 3: "Mercedes",
             4: "Aston Martin", 5: "Alpine", 6: "Williams", 7: "RB",
             8: "Haas", 9: "Sauber"
         }
+    
+    def _update_mappings_from_api(self):
+        """Update driver and team mappings from API data"""
+        if not self.api_data or not self.api_data.get('standings'):
+            return
         
-    def load_race_data(self):
+        standings = self.api_data['standings']
+        
+        # Update driver mappings
+        new_driver_mapping = {}
+        new_team_mapping = {}
+        
+        if 'drivers' in standings:
+            for i, driver_data in enumerate(standings['drivers']):
+                # Extract last name for mapping
+                driver_name = driver_data.get('driver_name', '')
+                if driver_name:
+                    last_name = driver_name.split()[-1]
+                    new_driver_mapping[i] = last_name
+                
+                # Map teams (every 2 drivers per team)
+                team_id = i // 2
+                team_name = driver_data.get('team_name', '')
+                if team_name and team_id not in new_team_mapping:
+                    # Simplify team names
+                    simplified_name = team_name.split()[0]  # Take first word
+                    new_team_mapping[team_id] = simplified_name
+        
+        # Update mappings if we got valid data
+        if new_driver_mapping:
+            print(f"🔄 Updated driver mappings from API: {len(new_driver_mapping)} drivers")
+            self.driver_mapping.update(new_driver_mapping)
+        
+        if new_team_mapping:
+            print(f"🔄 Updated team mappings from API: {len(new_team_mapping)} teams")
+            self.team_mapping.update(new_team_mapping)
+    
+    def _convert_api_to_internal_format(self):
+        """Convert API data to internal race data format"""
+        if not self.api_data or not self.api_data.get('standings'):
+            return
+        
+        standings = self.api_data['standings']
+        
+        # If we have race results, use them; otherwise simulate based on standings
+        if self.api_data.get('race_results'):
+            self._convert_race_results_from_api()
+        else:
+            # Simulate races based on current standings
+            self._simulate_races_from_standings(standings)
+    
+    def _simulate_races_from_standings(self, standings):
+        """Simulate race data based on API standings data"""
+        if not standings or not standings.get('drivers'):
+            print("⚠️ No standings data available for simulation")
+            return
+        
+        print(f"🏁 Simulating races based on {len(standings['drivers'])} drivers from API")
+        
+        # Create race data structure similar to _create_dummy_season_data
+        races = [
+            'Bahrain GP', 'Saudi Arabia GP', 'Australia GP', 'Japan GP', 
+            'China GP', 'Miami GP', 'Imola GP', 'Monaco GP', 'Canada GP', 
+            'Spain GP', 'Austria GP'
+        ]
+        
+        self.races_data = {}
+        
+        # Convert API driver data to performance mapping
+        performance_mapping = {}
+        for i, driver_data in enumerate(standings['drivers']):
+            # Higher points = better performance (lower time factor)
+            points = driver_data.get('points', 0)
+            max_points = standings['drivers'][0].get('points', 1)
+            
+            # Calculate performance factor (0.95 = fastest, 1.20 = slowest)
+            if max_points > 0:
+                performance_factor = 0.95 + (0.25 * (1 - points / max_points))
+            else:
+                performance_factor = 1.0 + (i * 0.02)  # Fallback based on position
+            
+            performance_mapping[i] = performance_factor
+        
+        # Generate race data for each race
+        for race_idx, race in enumerate(races):
+            n_laps = np.random.randint(55, 75)
+            data = []
+            
+            # Create grid based on current standings (with some variation)
+            num_drivers = len(standings['drivers'])
+            grid_positions = list(range(num_drivers))
+            np.random.shuffle(grid_positions)  # Some qualifying variation
+            
+            for driver in range(num_drivers):
+                start_pos = grid_positions.index(driver) + 1
+                current_pos = start_pos
+                
+                for lap in range(1, n_laps + 1):
+                    # Base lap time with performance factor from API data
+                    base_time = 78.0  # Base lap time in seconds
+                    driver_factor = performance_mapping.get(driver, 1.0)
+                    
+                    lap_time = base_time * driver_factor + np.random.normal(0, 0.5)
+                    
+                    # Simulate position changes during race
+                    if lap > 10:  # After first 10 laps, positions settle
+                        # Better drivers (lower factor) gradually move up
+                        if driver_factor < 1.0 and current_pos > driver:
+                            if np.random.random() < 0.1:  # 10% chance per lap
+                                current_pos = max(1, current_pos - 1)
+                        elif driver_factor > 1.1 and current_pos < driver + 5:
+                            if np.random.random() < 0.05:  # 5% chance per lap
+                                current_pos = min(num_drivers, current_pos + 1)
+                    
+                    data.append({
+                        'Driver': driver,
+                        'Team': driver // 2,
+                        'LapNumber': lap,
+                        'LapTime': lap_time,
+                        'Position': current_pos,
+                        'TyreLife': min(50, lap + np.random.randint(-3, 3))
+                    })
+            
+            self.races_data[race] = pd.DataFrame(data)
+        
+        print(f"✅ Generated {len(self.races_data)} races based on API standings")
+    
+    def _convert_race_results_from_api(self):
+        """Convert API race results to internal format"""
+        if not self.api_data or not self.api_data.get('race_results'):
+            return
+        
+        print("🔄 Converting API race results to internal format")
+        
+        race_results = self.api_data['race_results']
+        self.races_data = {}
+        
+        for round_num, race_data in race_results.items():
+            race_name = race_data.get('race_name', f'Round {round_num}')
+            results = race_data.get('results', [])
+            
+            # Convert to our internal format
+            converted_data = []
+            
+            for result in results:
+                # Simulate lap data based on final result
+                driver_id = next((i for i, name in self.driver_mapping.items() 
+                                if name.lower() in result.get('driver_name', '').lower()), 0)
+                
+                final_position = result.get('position', 20)
+                laps_completed = result.get('laps', 50)
+                
+                # Create lap-by-lap data
+                for lap in range(1, laps_completed + 1):
+                    lap_time = 78.0 + np.random.normal(0, 2.0)  # Simulated lap time
+                    
+                    converted_data.append({
+                        'Driver': driver_id,
+                        'Team': driver_id // 2,
+                        'LapNumber': lap,
+                        'LapTime': lap_time,
+                        'Position': final_position + np.random.randint(-2, 3),
+                        'TyreLife': min(50, lap + np.random.randint(-3, 3))
+                    })
+            
+            if converted_data:
+                self.races_data[race_name] = pd.DataFrame(converted_data)
+        
+        print(f"✅ Converted {len(self.races_data)} races from API results")
+    
+    def _simulate_races_from_api_data(self):
+        """Simulate race data based on available API data"""
+        print("🎲 Simulating race data from API driver information")
+        
+        if not self.api_data:
+            self._create_dummy_season_data()
+            return
+        
+        # Use driver info from API to create realistic race simulations
+        drivers_data = self.api_data.get('drivers', {})
+        
+        if not drivers_data:
+            print("⚠️ No driver data available, creating default season data")
+            self._create_dummy_season_data()
+            return
+        
+        # Create performance mapping from driver data
+        performance_mapping = {}
+        driver_count = len(drivers_data)
+        
+        for i, (driver_num, driver_info) in enumerate(drivers_data.items()):
+            # Base performance on position in driver list (lower index = better)
+            performance_factor = 0.95 + (i * 0.02)  # Range from 0.95 to ~1.35
+            performance_mapping[i] = performance_factor
+        
+        # Simulate race calendar
+        races = [
+            'Bahrain GP', 'Saudi Arabia GP', 'Australia GP', 'Japan GP', 
+            'China GP', 'Miami GP', 'Imola GP', 'Monaco GP', 'Canada GP', 
+            'Spain GP', 'Austria GP'
+        ]
+        
+        self.races_data = {}
+        
+        for race_idx, race in enumerate(races):
+            n_laps = np.random.randint(55, 75)
+            data = []
+            
+            # Create grid positions with some variation
+            grid_positions = list(range(min(20, driver_count)))
+            np.random.shuffle(grid_positions)
+            
+            for driver in range(min(20, driver_count)):
+                start_pos = grid_positions.index(driver) + 1 if driver in grid_positions else driver + 1
+                current_pos = start_pos
+                
+                for lap in range(1, n_laps + 1):
+                    # Base lap time with performance factor
+                    base_time = 78.0  
+                    driver_factor = performance_mapping.get(driver, 1.0)
+                    
+                    lap_time = base_time * driver_factor + np.random.normal(0, 0.5)
+                    
+                    # Simulate position changes during race
+                    if lap > 10:
+                        if driver_factor < 1.0 and current_pos > driver:
+                            if np.random.random() < 0.1:
+                                current_pos = max(1, current_pos - 1)
+                        elif driver_factor > 1.1 and current_pos < driver + 5:
+                            if np.random.random() < 0.05:
+                                current_pos = min(20, current_pos + 1)
+                    
+                    data.append({
+                        'Driver': driver,
+                        'Team': driver // 2,
+                        'LapNumber': lap,
+                        'LapTime': lap_time,
+                        'Position': current_pos,
+                        'TyreLife': min(50, lap + np.random.randint(-3, 3))
+                    })
+            
+            self.races_data[race] = pd.DataFrame(data)
+        
+        print(f"✅ Simulated {len(self.races_data)} races from API data")
+        
+    def load_race_data(self, use_api=True):
         """Load available race data from the season"""
         print("Loading season race data...")
         
-        # For now, we'll use Monaco data and simulate additional races
+        # First try to load from API if enabled
+        if use_api:
+            try:
+                api_loaded = self._load_from_api()
+                if api_loaded:
+                    print("✅ Successfully loaded data from F1 API")
+                    return
+            except Exception as e:
+                print(f"⚠️ API loading failed, falling back to local data: {e}")
+    
+    def _load_from_api(self):
+        """Load data from F1 API sources"""
+        print("🌐 Attempting to load data from F1 API...")
+        
+        try:
+            # Initialize API integration for current year (2024 since 2025 hasn't started)
+            api_year = 2024 if self.year == 2025 else self.year
+            self.api_integration = F1APIIntegration(year=api_year)
+            
+            # Fetch comprehensive season data
+            self.api_data = self.api_integration.get_comprehensive_season_data()
+            
+            if self.api_data and (self.api_data.get('races_data') or self.api_data.get('drivers')):
+                # Update mappings from API data
+                self._update_mappings_from_api()
+                
+                # Use races_data if available, otherwise create simulated data
+                if self.api_data.get('races_data'):
+                    self.races_data = self.api_data['races_data']
+                    print(f"✅ Used {len(self.races_data)} races from FastF1 data")
+                else:
+                    # Simulate races based on available data
+                    self._simulate_races_from_api_data()
+                
+                # Save API data for future use
+                try:
+                    self.api_integration.save_api_data_to_pipeline_format(self.api_data)
+                except AttributeError:
+                    pass  # Method doesn't exist in new integration
+                
+                return True
+            else:
+                print("⚠️ No valid API data received")
+                return False
+                
+        except Exception as e:
+            print(f"❌ API integration failed: {e}")
+            return False
+        
+        # Fallback to local data or dummy data
         try:
             monaco_data = pd.read_csv(f"{self.data_dir}Monaco Grand Prix/laps_features_clean.csv")
             
